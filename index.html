@@ -3,37 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ehsan Shaikh - Frontend & Full-Stack Web Developer Portfolio</title>
-    <meta name="description" content="Ehsan Shaikh's premium portfolio as a Frontend and Full-Stack Web Developer in India, pursuing BSc in Information Technology. Explore real-world projects, skills, and contact for opportunities.">
-    <meta name="keywords" content="Ehsan Shaikh, web developer portfolio, frontend developer, full-stack developer, BSc IT, India, developer internship">
+    <title>Ehsan Shaikh - Frontend & Full-Stack Web Developer</title>
+    <meta name="description" content="Premium portfolio of Ehsan Shaikh, a Frontend and Full-Stack Web Developer pursuing BSc IT in India. Real-world projects, modern skills, and contact for internships.">
+    <meta name="keywords" content="Ehsan Shaikh, frontend developer, full-stack developer, web developer portfolio, BSc IT India">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Ehsan Shaikh - Frontend & Full-Stack Web Developer Portfolio">
-    <meta property="og:description" content="Discover Ehsan Shaikh's professional portfolio showcasing expertise in web development with real-world projects.">
+    <meta property="og:title" content="Ehsan Shaikh - Frontend & Full-Stack Web Developer">
+    <meta property="og:description" content="Explore Ehsan Shaikh's luxury portfolio with real-world projects and modern web skills.">
     <meta property="og:image" content="ahsanphoto.png">
-    <meta property="og:url" content="https://ehsanshaikh.com">
+    <meta property="og:url" content="https://ahsan-shaikh-j1yv.vercel.app">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ehsan Shaikh - Frontend & Full-Stack Web Developer Portfolio">
-    <meta name="twitter:description" content="Discover Ehsan Shaikh's professional portfolio showcasing expertise in web development with real-world projects.">
+    <meta name="twitter:title" content="Ehsan Shaikh - Frontend & Full-Stack Web Developer">
+    <meta name="twitter:description" content="Explore Ehsan Shaikh's luxury portfolio with real-world projects and modern web skills.">
     <meta name="twitter:image" content="ahsanphoto.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #1a1a1a;
-            --accent-blue: #00bfff;
-            --accent-purple: #8a2be2;
-            --text-primary: #e0e0e0;
-            --text-secondary: #a0a0a0;
-            --gradient: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glow: 0 0 15px rgba(0, 191, 255, 0.3);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1f1f1f;
+            --accent-cyan: #00ffff;
+            --accent-purple: #9d4edd;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            --glass-bg: rgba(30, 30, 30, 0.4);
+            --glow-cyan: 0 0 20px rgba(0, 255, 255, 0.4);
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -44,64 +44,43 @@
             color: var(--text-primary);
             scroll-behavior: smooth;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         section {
-            padding: 80px 20px;
+            padding: 100px 20px;
             max-width: 1200px;
             margin: 0 auto;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        section.visible { opacity: 1; transform: translateY(0); }
-
-        h1, h2, h3 { text-align: center; margin-bottom: 40px; }
+        h1, h2 { text-align: center; margin-bottom: 50px; }
 
         .btn {
-            display: inline-block;
-            padding: 12px 28px;
+            padding: 14px 32px;
             background: var(--gradient);
-            color: var(--text-primary);
+            color: #fff;
             border-radius: 50px;
             text-decoration: none;
+            display: inline-block;
+            box-shadow: var(--glow-cyan);
+            transition: all 0.4s;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: var(--glow);
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 300%; height: 300%;
-            background: rgba(255,255,255,0.1);
-            transform: translate(-50%,-50%) scale(0);
-            transition: transform 0.6s;
-            border-radius: 50%;
-        }
-
-        .btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0,191,255,0.5); }
-        .btn:hover::before { transform: translate(-50%,-50%) scale(1); }
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 0 30px rgba(0, 255, 255, 0.6); }
 
         .glass {
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 40px;
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px;
             box-shadow: var(--shadow);
-            transition: transform 0.5s ease;
         }
-
-        .glass:hover { transform: translateY(-10px); }
 
         /* Hero */
         #hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -109,164 +88,94 @@
             text-align: center;
             background: var(--gradient);
             position: relative;
-            overflow: hidden;
         }
 
-        #hero::before {
+        #hero::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle, rgba(10,10,10,0.8), var(--bg-primary));
-            z-index: 1;
+            background: rgba(15,15,15,0.7);
         }
 
-        #hero > * { position: relative; z-index: 2; }
-
-        #hero h1 { font-size: 4rem; }
-        #hero h2 { font-size: 2rem; }
-        #hero p { font-size: 1.2rem; margin: 20px 0; }
+        #hero > * { position: relative; z-index: 1; }
 
         .profile-photo {
-            width: 180px; height: 180px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
+            border: 5px solid var(--accent-cyan);
+            box-shadow: var(--glow-cyan);
             object-fit: cover;
-            border: 4px solid var(--accent-blue);
-            box-shadow: var(--glow);
-            animation: float 4s ease-in-out infinite;
+            animation: float 5s ease-in-out infinite;
+            margin-bottom: 30px;
         }
 
-        .profile-photo:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(0,191,255,0.6);
-        }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 
-        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        #hero h1 { font-size: 4.5rem; margin-bottom: 20px; }
+        #hero h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        #hero p { font-size: 1.3rem; max-width: 700px; margin-bottom: 40px; }
 
-        .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .ctas { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
 
-        /* About */
-        #about p { max-width: 800px; margin: 0 auto; text-align: center; font-weight: 300; }
+        /* Sections */
+        #about p { text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; }
 
-        /* Skills */
-        #skills .skills-grid {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
         }
 
-        .skill-card {
-            text-align: center;
-            padding: 30px;
+        .card {
             background: var(--glass-bg);
-            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
             box-shadow: var(--shadow);
-            transition: transform 0.4s, box-shadow 0.4s;
+            transition: transform 0.4s;
         }
 
-        .skill-card:hover {
-            transform: scale(1.05);
-            box-shadow: var(--glow);
-        }
+        .card:hover { transform: translateY(-15px); }
 
-        /* Projects */
-        #projects .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .project-card ul {
-            list-style: none;
-            margin: 20px 0;
+        .tech-list {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
+            margin: 20px 0;
+            list-style: none;
         }
 
-        .project-card li {
-            background: rgba(255,255,255,0.1);
-            padding: 5px 15px;
-            border-radius: 20px;
+        .tech-list li {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 30px;
             font-size: 0.9rem;
         }
-
-        /* GitHub */
-        #github .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 30px;
-            background: var(--glass-bg);
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: transform 0.4s, box-shadow 0.4s;
-        }
-
-        .stat-card:hover {
-            transform: scale(1.05);
-            box-shadow: var(--glow);
-        }
-
-        .stat-card strong { font-size: 2rem; display: block; }
-
-        /* Contact */
-        #contact form { max-width: 600px; margin: 0 auto 40px; }
-
-        #contact input, #contact textarea {
-            width: 100%;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            font-family: inherit;
-            transition: box-shadow 0.3s;
-        }
-
-        #contact input:focus, #contact textarea:focus { box-shadow: var(--glow); outline: none; }
-
-        #contact button { width: 100%; cursor: pointer; }
-
-        #message-status {
-            text-align: center;
-            margin-top: 20px;
-            font-weight: 300;
-            display: none;
-        }
-
-        .contact-info { text-align: center; margin-top: 40px; }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 40px;
             background: var(--bg-secondary);
-            font-size: 0.9rem;
             color: var(--text-secondary);
         }
 
-        @media (min-width: 768px) {
-            #hero h1 { font-size: 5rem; }
-            #hero h2 { font-size: 2.5rem; }
-            .profile-photo { width: 220px; height: 220px; }
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 3.5rem; }
+            .profile-photo { width: 160px; height: 160px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Hero Section -->
     <section id="hero">
-        <img src="ahsanphoto.png" alt="Ehsan Shaikh Profile" class="profile-photo">
+        <img src="ahsanphoto.png" alt="Ehsan Shaikh" class="profile-photo">
         <h1>Ehsan Shaikh</h1>
         <h2>Frontend / Full-Stack Web Developer</h2>
-        <p>Pursuing BSc in Information Technology (BSc IT) with real-world production projects experience in India.</p>
+        <p>Pursuing BSc in Information Technology (BSc IT) • Real-world production projects • India</p>
         <div class="ctas">
             <a href="#projects" class="btn">View Projects</a>
             <a href="Ehsan_Shaikh_Resume.pdf" class="btn" download>Download Resume</a>
@@ -274,201 +183,92 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="glass">
         <h2>About Me</h2>
-        <p>As a dedicated Frontend and Full-Stack Web Developer pursuing my BSc in Information Technology, I bring hands-on experience from real-world production projects. Based in India, I focus on crafting elegant, performant web solutions that blend innovative design with robust functionality. My passion lies in turning complex ideas into seamless user experiences, always prioritizing clean code and scalability.</p>
+        <p>I am a passionate Frontend and Full-Stack Web Developer with hands-on experience in building real-world, production-level applications. Currently pursuing my BSc in Information Technology, I specialize in creating modern, responsive, and performant websites using cutting-edge technologies. I focus on clean code, intuitive UI/UX, and scalable solutions.</p>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="glass">
         <h2>Skills</h2>
-        <div class="skills-grid" id="skills-grid"></div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="glass">
-        <h2>Projects</h2>
-        <div class="projects-grid" id="projects-grid"></div>
-    </section>
-
-    <!-- GitHub Section -->
-    <section id="github" class="glass">
-        <h2>GitHub</h2>
-        <div class="stats-grid" id="github-stats"></div>
-        <a href="https://github.com/Zapcart" target="_blank" class="btn">Visit GitHub Profile</a>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="glass">
-        <h2>Contact</h2>
-        <form id="contact-form">
-            <input type="text" name="user_name" placeholder="Your Name" required>
-            <input type="email" name="user_email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit" class="btn">Send Message</button>
-        </form>
-        <p id="message-status"></p>
-        <div class="contact-info">
-            <a href="https://wa.me/919960824574" target="_blank" class="btn">WhatsApp</a>
+        <div class="grid">
+            <div class="card">HTML</div>
+            <div class="card">CSS</div>
+            <div class="card">JavaScript</div>
+            <div class="card">React</div>
+            <div class="card">Tailwind CSS</div>
+            <div class="card">Node.js</div>
+            <div class="card">MongoDB</div>
+            <div class="card">Git & GitHub</div>
+            <div class="card">API Integration</div>
+            <div class="card">Automation Basics</div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <section id="projects" class="glass">
+        <h2>Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Book Your Villa</h3>
+                <p>Luxury villa booking platform with responsive design and seamless user flow.</p>
+                <ul class="tech-list">
+                    <li>HTML5</li><li>CSS3</li><li>JavaScript</li>
+                </ul>
+                <a href="https://github.com/Zapcart/Book-Your-Villa" target="_blank" class="btn">GitHub</a>
+            </div>
+            <div class="card">
+                <h3>Zapcart</h3>
+                <p>Advanced e-commerce shopping cart system built for performance.</p>
+                <ul class="tech-list">
+                    <li>HTML</li><li>CSS</li><li>JavaScript</li>
+                </ul>
+                <a href="https://github.com/Zapcart/zapcart" target="_blank" class="btn">GitHub</a>
+            </div>
+            <div class="card">
+                <h3>E-Sports Platform</h3>
+                <p>Full-featured platform for tournaments and community management.</p>
+                <ul class="tech-list">
+                    <li>React</li><li>Node.js</li><li>MongoDB</li>
+                </ul>
+                <a href="https://github.com/Zapcart" target="_blank" class="btn">GitHub</a>
+            </div>
+            <div class="card">
+                <h3>Goodtimesvilla</h3>
+                <p>Premium villa rental website with elegant UI and booking system.</p>
+                <ul class="tech-list">
+                    <li>HTML5</li><li>CSS3</li><li>JavaScript</li>
+                </ul>
+                <a href="https://github.com/Zapcart/Goodtimesvilla" target="_blank" class="btn">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="github" class="glass">
+        <h2>GitHub</h2>
+        <div class="grid">
+            <div class="card"><strong style="font-size:2.5rem;">7</strong><br>Repositories</div>
+            <div class="card"><strong style="font-size:2.5rem;">1</strong><br>Followers</div>
+            <div class="card"><strong style="font-size:2.5rem;">177</strong><br>Contributions</div>
+        </div>
+        <br>
+        <a href="https://github.com/Zapcart" target="_blank" class="btn">Visit GitHub Profile</a>
+    </section>
+
+    <section id="contact" class="glass">
+        <h2>Contact Me</h2>
+        <form style="max-width:600px;margin:0 auto;">
+            <input type="text" placeholder="Your Name" style="width:100%;padding:15px;margin:10px 0;border-radius:12px;background:#333;color:#fff;border:none;" required>
+            <input type="email" placeholder="Your Email" style="width:100%;padding:15px;margin:10px 0;border-radius:12px;background:#333;color:#fff;border:none;" required>
+            <textarea placeholder="Your Message" rows="6" style="width:100%;padding:15px;margin:10px 0;border-radius:12px;background:#333;color:#fff;border:none;resize:vertical;" required></textarea>
+            <button type="submit" class="btn" style="width:100%;">Send Message</button>
+        </form>
+        <p style="text-align:center;margin-top:30px;">
+            <a href="https://wa.me/919960824574" target="_blank" class="btn">WhatsApp Me</a>
+        </p>
+    </section>
+
     <footer>
-        <p>© Ehsan Shaikh</p>
+        <p>© 2025 Ehsan Shaikh. All rights reserved.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        // Configuration Object - Easy to update everything in one place
-        const config = {
-            skills: [
-                "HTML", "CSS", "JavaScript", "React", "Tailwind CSS",
-                "Node.js", "MongoDB", "Git & GitHub", "API Integration", "Automation basics"
-            ],
-            projects: [
-                { title: "Book Your Villa", desc: "A luxurious villa booking platform with seamless user experience and responsive design.", tech: ["HTML5", "CSS3", "JavaScript"], github: "https://github.com/Zapcart/Book-Your-Villa" },
-                { title: "Zapcart", desc: "An advanced e-commerce cart system optimized for performance and scalability.", tech: ["HTML", "CSS", "JavaScript"], github: "https://github.com/Zapcart/zapcart" },
-                { title: "E-Sports Platform", desc: "A comprehensive platform for e-sports events, tournaments, and community engagement.", tech: ["React", "Node.js", "MongoDB"], github: "https://github.com/Zapcart" },
-                { title: "Goodtimesvilla", desc: "Premium villa rental service with elegant UI and efficient booking management.", tech: ["HTML5", "CSS3", "JavaScript"], github: "https://github.com/Zapcart/Goodtimesvilla" }
-            ],
-            githubStats: [
-                { value: "7", label: "Repositories" },
-                { value: "1", label: "Followers" },
-                { value: "177", label: "Contributions" }
-            ],
-            emailjs: {
-                publicKey: "r3XP05k5dGR_1LzFs",
-                serviceID: "service_semjs1c",
-                templateID: "template_a5d68vo"
-            }
-        };
-
-        // Module: Hero Animation
-        function initHeroAnimation() {
-            gsap.timeline()
-                .to('#hero .profile-photo', { duration: 1, opacity: 1, y: 0, ease: 'power3.out' })
-                .to('#hero h1', { duration: 0.8, opacity: 1, scale: 1, ease: 'power3.out' }, '-=0.5')
-                .to('#hero h2', { duration: 0.8, opacity: 1, y: 0, ease: 'power3.out' }, '-=0.5')
-                .to('#hero p', { duration: 0.8, opacity: 1, y: 0, ease: 'power3.out' }, '-=0.5')
-                .to('#hero .ctas', { duration: 0.8, opacity: 1, y: 0, ease: 'power3.out' }, '-=0.5');
-        }
-
-        // Module: Scroll Reveal
-        function initScrollReveal() {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('section:not(#hero)').forEach(sec => observer.observe(sec));
-
-            // Staggered card animations for skills & github stats
-            ['skills', 'github'].forEach(id => {
-                observer.observe(document.getElementById(id));
-            });
-        }
-
-        // Module: Skills Renderer
-        function renderSkills() {
-            const grid = document.getElementById('skills-grid');
-            config.skills.forEach(skill => {
-                const card = document.createElement('div');
-                card.className = 'skill-card';
-                card.textContent = skill;
-                grid.appendChild(card);
-            });
-        }
-
-        // Module: Projects Renderer
-        function renderProjects() {
-            const grid = document.getElementById('projects-grid');
-            config.projects.forEach((project, i) => {
-                const card = document.createElement('div');
-                card.className = 'project-card glass';
-                card.innerHTML = `
-                    <h3>${project.title}</h3>
-                    <p>${project.desc}</p>
-                    <ul>${project.tech.map(t => `<li>${t}</li>`).join('')}</ul>
-                    <a href="${project.github}" target="_blank" class="btn">GitHub</a>
-                `;
-                grid.appendChild(card);
-                gsap.from(card, { duration: 0.8, opacity: 0, y: 50, delay: i * 0.2, ease: 'power3.out' });
-            });
-        }
-
-        // Module: GitHub Stats Renderer
-        function renderGitHubStats() {
-            const grid = document.getElementById('github-stats');
-            config.githubStats.forEach(stat => {
-                const card = document.createElement('div');
-                card.className = 'stat-card';
-                card.innerHTML = `<strong>${stat.value}</strong> ${stat.label}`;
-                grid.appendChild(card);
-            });
-        }
-
-        // Module: Contact Form (EmailJS)
-        function initContactForm() {
-            emailjs.init(config.emailjs.publicKey);
-
-            document.getElementById('contact-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const status = document.getElementById('message-status');
-                status.style.display = 'block';
-                status.textContent = 'Sending...';
-                status.style.color = '#00bfff';
-
-                emailjs.sendForm(config.emailjs.serviceID, config.emailjs.templateID, this)
-                    .then(() => {
-                        status.textContent = 'Message sent successfully!';
-                        status.style.color = '#00ff00';
-                        this.reset();
-                        setTimeout(() => status.style.display = 'none', 5000);
-                    }, (err) => {
-                        status.textContent = 'Failed to send message. Please try again.';
-                        status.style.color = '#ff0000';
-                        console.error(err);
-                    });
-            });
-        }
-
-        // Card Stagger Animation on Reveal
-        function initCardStagger() {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        gsap.to(entry.target.querySelectorAll('.skill-card, .stat-card'), {
-                            duration: 0.5,
-                            opacity: 1,
-                            scale: 1,
-                            stagger: 0.1,
-                            ease: 'power2.out'
-                        });
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            observer.observe(document.getElementById('skills'));
-            observer.observe(document.getElementById('github'));
-        }
-
-        // Initialize Everything
-        document.addEventListener('DOMContentLoaded', () => {
-            initHeroAnimation();
-            initScrollReveal();
-            renderSkills();
-            renderProjects();
-            renderGitHubStats();
-            initContactForm();
-            initCardStagger();
-        });
-    </script>
 </body>
 </html>
