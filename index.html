@@ -36,11 +36,7 @@
             --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -60,15 +56,9 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        section.visible { opacity: 1; transform: translateY(0); }
 
-        h1, h2, h3 {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+        h1, h2, h3 { text-align: center; margin-bottom: 40px; }
 
         .btn {
             display: inline-block;
@@ -86,38 +76,28 @@
         .btn::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: translate(-50%, -50%) scale(0);
+            top: 50%; left: 50%;
+            width: 300%; height: 300%;
+            background: rgba(255,255,255,0.1);
+            transform: translate(-50%,-50%) scale(0);
             transition: transform 0.6s;
             border-radius: 50%;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(0, 191, 255, 0.5);
-        }
-
-        .btn:hover::before {
-            transform: translate(-50%, -50%) scale(1);
-        }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0,191,255,0.5); }
+        .btn:hover::before { transform: translate(-50%,-50%) scale(1); }
 
         .glass {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.1);
             padding: 40px;
             box-shadow: var(--shadow);
             transition: transform 0.5s ease;
         }
 
-        .glass:hover {
-            transform: translateY(-10px);
-        }
+        .glass:hover { transform: translateY(-10px); }
 
         /* Hero */
         #hero {
@@ -135,77 +115,37 @@
         #hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background: radial-gradient(circle, rgba(10,10,10,0.8), var(--bg-primary));
             z-index: 1;
         }
 
-        #hero > * {
-            position: relative;
-            z-index: 2;
-        }
+        #hero > * { position: relative; z-index: 2; }
 
-        #hero h1 {
-            font-size: 4rem;
-            opacity: 0;
-            transform: scale(0.9);
-        }
-
-        #hero h2 {
-            font-size: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        #hero p {
-            font-size: 1.2rem;
-            margin: 20px 0;
-            opacity: 0;
-            transform: translateY(20px);
-        }
+        #hero h1 { font-size: 4rem; }
+        #hero h2 { font-size: 2rem; }
+        #hero p { font-size: 1.2rem; margin: 20px 0; }
 
         .profile-photo {
-            width: 180px;
-            height: 180px;
+            width: 180px; height: 180px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--accent-blue);
             box-shadow: var(--glow);
             animation: float 4s ease-in-out infinite;
-            transition: transform 0.3s, box-shadow 0.3s;
-            opacity: 0;
-            transform: translateY(50px);
         }
 
         .profile-photo:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(0, 191, 255, 0.6);
+            box-shadow: 0 0 30px rgba(0,191,255,0.6);
         }
 
-        .ctas {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-        }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
+        .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
 
         /* About */
-        #about p {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            font-weight: 300;
-        }
+        #about p { max-width: 800px; margin: 0 auto; text-align: center; font-weight: 300; }
 
         /* Skills */
         #skills .skills-grid {
@@ -221,8 +161,6 @@
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: transform 0.4s, box-shadow 0.4s;
-            opacity: 0;
-            transform: scale(0.9);
         }
 
         .skill-card:hover {
@@ -230,22 +168,11 @@
             box-shadow: var(--glow);
         }
 
-        .skill-card.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
         /* Projects */
         #projects .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
-        }
-
-        .project-card {
-            padding: 30px;
-            text-align: center;
-            transition: transform 0.4s, box-shadow 0.4s;
         }
 
         .project-card ul {
@@ -258,7 +185,7 @@
         }
 
         .project-card li {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.1);
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
@@ -279,13 +206,6 @@
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: transform 0.4s, box-shadow 0.4s;
-            opacity: 0;
-            transform: scale(0.9);
-        }
-
-        .stat-card.visible {
-            opacity: 1;
-            transform: scale(1);
         }
 
         .stat-card:hover {
@@ -293,45 +213,26 @@
             box-shadow: var(--glow);
         }
 
-        .stat-card strong {
-            font-size: 2rem;
-            display: block;
-        }
-
-        #github .btn {
-            display: block;
-            max-width: 300px;
-            margin: 0 auto;
-            text-align: center;
-        }
+        .stat-card strong { font-size: 2rem; display: block; }
 
         /* Contact */
-        #contact form {
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
+        #contact form { max-width: 600px; margin: 0 auto 40px; }
 
         #contact input, #contact textarea {
             width: 100%;
             padding: 15px;
             margin: 15px 0;
             border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.1);
             background: var(--bg-secondary);
             color: var(--text-primary);
             font-family: inherit;
             transition: box-shadow 0.3s;
         }
 
-        #contact input:focus, #contact textarea:focus {
-            box-shadow: var(--glow);
-            outline: none;
-        }
+        #contact input:focus, #contact textarea:focus { box-shadow: var(--glow); outline: none; }
 
-        #contact button {
-            width: 100%;
-            cursor: pointer;
-        }
+        #contact button { width: 100%; cursor: pointer; }
 
         #message-status {
             text-align: center;
@@ -340,14 +241,7 @@
             display: none;
         }
 
-        .contact-info {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .contact-info a {
-            margin: 0 15px;
-        }
+        .contact-info { text-align: center; margin-top: 40px; }
 
         /* Footer */
         footer {
@@ -358,7 +252,6 @@
             color: var(--text-secondary);
         }
 
-        /* Responsive */
         @media (min-width: 768px) {
             #hero h1 { font-size: 5rem; }
             #hero h2 { font-size: 2.5rem; }
@@ -367,6 +260,8 @@
     </style>
 </head>
 <body>
+
+    <!-- Hero Section -->
     <section id="hero">
         <img src="ahsanphoto.png" alt="Ehsan Shaikh Profile" class="profile-photo">
         <h1>Ehsan Shaikh</h1>
@@ -379,48 +274,38 @@
         </div>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="glass">
         <h2>About Me</h2>
         <p>As a dedicated Frontend and Full-Stack Web Developer pursuing my BSc in Information Technology, I bring hands-on experience from real-world production projects. Based in India, I focus on crafting elegant, performant web solutions that blend innovative design with robust functionality. My passion lies in turning complex ideas into seamless user experiences, always prioritizing clean code and scalability.</p>
     </section>
 
+    <!-- Skills Section -->
     <section id="skills" class="glass">
         <h2>Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card">HTML</div>
-            <div class="skill-card">CSS</div>
-            <div class="skill-card">JavaScript</div>
-            <div class="skill-card">React</div>
-            <div class="skill-card">Tailwind CSS</div>
-            <div class="skill-card">Node.js</div>
-            <div class="skill-card">MongoDB</div>
-            <div class="skill-card">Git & GitHub</div>
-            <div class="skill-card">API Integration</div>
-            <div class="skill-card">Automation basics</div>
-        </div>
+        <div class="skills-grid" id="skills-grid"></div>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects" class="glass">
         <h2>Projects</h2>
-        <div class="projects-grid"></div>
+        <div class="projects-grid" id="projects-grid"></div>
     </section>
 
+    <!-- GitHub Section -->
     <section id="github" class="glass">
         <h2>GitHub</h2>
-        <div class="stats-grid">
-            <div class="stat-card"><strong>7</strong> Repositories</div>
-            <div class="stat-card"><strong>1</strong> Followers</div>
-            <div class="stat-card"><strong>177</strong> Contributions</div>
-        </div>
+        <div class="stats-grid" id="github-stats"></div>
         <a href="https://github.com/Zapcart" target="_blank" class="btn">Visit GitHub Profile</a>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact" class="glass">
         <h2>Contact</h2>
         <form id="contact-form">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" placeholder="Your Message" required></textarea>
+            <input type="text" name="user_name" placeholder="Your Name" required>
+            <input type="email" name="user_email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
             <button type="submit" class="btn">Send Message</button>
         </form>
         <p id="message-status"></p>
@@ -429,6 +314,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>© Ehsan Shaikh</p>
     </footer>
@@ -436,21 +322,128 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        // Hero Entrance
-        gsap.timeline()
-            .to('#hero .profile-photo', { duration: 1, opacity: 1, y: 0, ease: 'power3.out' })
-            .to('#hero h1', { duration: 0.8, opacity: 1, scale: 1, ease: 'power3.out' }, '-=0.5')
-            .to('#hero h2', { duration: 0.8, opacity: 1, y: 0, ease: 'power3.out' }, '-=0.5')
-            .to('#hero p', { duration: 0.8, opacity: 1, y: 0, ease: 'power3.out' }, '-=0.5')
-            .to('#hero .ctas', { duration: 0.8, opacity: 1, y: 0, ease: 'power3.out' }, '-=0.5');
+        // Configuration Object - Easy to update everything in one place
+        const config = {
+            skills: [
+                "HTML", "CSS", "JavaScript", "React", "Tailwind CSS",
+                "Node.js", "MongoDB", "Git & GitHub", "API Integration", "Automation basics"
+            ],
+            projects: [
+                { title: "Book Your Villa", desc: "A luxurious villa booking platform with seamless user experience and responsive design.", tech: ["HTML5", "CSS3", "JavaScript"], github: "https://github.com/Zapcart/Book-Your-Villa" },
+                { title: "Zapcart", desc: "An advanced e-commerce cart system optimized for performance and scalability.", tech: ["HTML", "CSS", "JavaScript"], github: "https://github.com/Zapcart/zapcart" },
+                { title: "E-Sports Platform", desc: "A comprehensive platform for e-sports events, tournaments, and community engagement.", tech: ["React", "Node.js", "MongoDB"], github: "https://github.com/Zapcart" },
+                { title: "Goodtimesvilla", desc: "Premium villa rental service with elegant UI and efficient booking management.", tech: ["HTML5", "CSS3", "JavaScript"], github: "https://github.com/Zapcart/Goodtimesvilla" }
+            ],
+            githubStats: [
+                { value: "7", label: "Repositories" },
+                { value: "1", label: "Followers" },
+                { value: "177", label: "Contributions" }
+            ],
+            emailjs: {
+                publicKey: "r3XP05k5dGR_1LzFs",
+                serviceID: "service_semjs1c",
+                templateID: "template_a5d68vo"
+            }
+        };
 
-        // Scroll Reveals
-        const sections = document.querySelectorAll('section:not(#hero)');
-        const revealObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    if (entry.target.id === 'skills' || entry.target.id === 'github') {
+        // Module: Hero Animation
+        function initHeroAnimation() {
+            gsap.timeline()
+                .to('#hero .profile-photo', { duration: 1, opacity: 1, y: 0, ease: 'power3.out' })
+                .to('#hero h1', { duration: 0.8, opacity: 1, scale: 1, ease: 'power3.out' }, '-=0.5')
+                .to('#hero h2', { duration: 0.8, opacity: 1, y: 0, ease: 'power3.out' }, '-=0.5')
+                .to('#hero p', { duration: 0.8, opacity: 1, y: 0, ease: 'power3.out' }, '-=0.5')
+                .to('#hero .ctas', { duration: 0.8, opacity: 1, y: 0, ease: 'power3.out' }, '-=0.5');
+        }
+
+        // Module: Scroll Reveal
+        function initScrollReveal() {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('section:not(#hero)').forEach(sec => observer.observe(sec));
+
+            // Staggered card animations for skills & github stats
+            ['skills', 'github'].forEach(id => {
+                observer.observe(document.getElementById(id));
+            });
+        }
+
+        // Module: Skills Renderer
+        function renderSkills() {
+            const grid = document.getElementById('skills-grid');
+            config.skills.forEach(skill => {
+                const card = document.createElement('div');
+                card.className = 'skill-card';
+                card.textContent = skill;
+                grid.appendChild(card);
+            });
+        }
+
+        // Module: Projects Renderer
+        function renderProjects() {
+            const grid = document.getElementById('projects-grid');
+            config.projects.forEach((project, i) => {
+                const card = document.createElement('div');
+                card.className = 'project-card glass';
+                card.innerHTML = `
+                    <h3>${project.title}</h3>
+                    <p>${project.desc}</p>
+                    <ul>${project.tech.map(t => `<li>${t}</li>`).join('')}</ul>
+                    <a href="${project.github}" target="_blank" class="btn">GitHub</a>
+                `;
+                grid.appendChild(card);
+                gsap.from(card, { duration: 0.8, opacity: 0, y: 50, delay: i * 0.2, ease: 'power3.out' });
+            });
+        }
+
+        // Module: GitHub Stats Renderer
+        function renderGitHubStats() {
+            const grid = document.getElementById('github-stats');
+            config.githubStats.forEach(stat => {
+                const card = document.createElement('div');
+                card.className = 'stat-card';
+                card.innerHTML = `<strong>${stat.value}</strong> ${stat.label}`;
+                grid.appendChild(card);
+            });
+        }
+
+        // Module: Contact Form (EmailJS)
+        function initContactForm() {
+            emailjs.init(config.emailjs.publicKey);
+
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const status = document.getElementById('message-status');
+                status.style.display = 'block';
+                status.textContent = 'Sending...';
+                status.style.color = '#00bfff';
+
+                emailjs.sendForm(config.emailjs.serviceID, config.emailjs.templateID, this)
+                    .then(() => {
+                        status.textContent = 'Message sent successfully!';
+                        status.style.color = '#00ff00';
+                        this.reset();
+                        setTimeout(() => status.style.display = 'none', 5000);
+                    }, (err) => {
+                        status.textContent = 'Failed to send message. Please try again.';
+                        status.style.color = '#ff0000';
+                        console.error(err);
+                    });
+            });
+        }
+
+        // Card Stagger Animation on Reveal
+        function initCardStagger() {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
                         gsap.to(entry.target.querySelectorAll('.skill-card, .stat-card'), {
                             duration: 0.5,
                             opacity: 1,
@@ -459,77 +452,22 @@
                             ease: 'power2.out'
                         });
                     }
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        sections.forEach(section => revealObserver.observe(section));
-
-        // Projects Dynamic
-        const projectsData = [
-            {
-                title: 'Book Your Villa',
-                desc: 'A luxurious villa booking platform with seamless user experience and responsive design.',
-                tech: ['HTML5', 'CSS3', 'JavaScript'],
-                github: 'https://github.com/Zapcart/Book-Your-Villa'
-            },
-            {
-                title: 'Zapcart',
-                desc: 'An advanced e-commerce cart system optimized for performance and scalability.',
-                tech: ['HTML', 'CSS', 'JavaScript'],
-                github: 'https://github.com/Zapcart/zapcart'
-            },
-            {
-                title: 'E-Sports Platform',
-                desc: 'A comprehensive platform for e-sports events, tournaments, and community engagement.',
-                tech: ['React', 'Node.js', 'MongoDB'],
-                github: 'https://github.com/Zapcart'
-            },
-            {
-                title: 'Goodtimesvilla',
-                desc: 'Premium villa rental service with elegant UI and efficient booking management.',
-                tech: ['HTML5', 'CSS3', 'JavaScript'],
-                github: 'https://github.com/Zapcart/Goodtimesvilla'
-            }
-        ];
-
-        const projectsGrid = document.querySelector('#projects .projects-grid');
-        projectsData.forEach((project, index) => {
-            const card = document.createElement('div');
-            card.classList.add('project-card', 'glass');
-            card.innerHTML = `
-                <h3>${project.title}</h3>
-                <p>${project.desc}</p>
-                <ul>${project.tech.map(t => `<li>${t}</li>`).join('')}</ul>
-                <a href="${project.github}" target="_blank" class="btn">GitHub</a>
-            `;
-            projectsGrid.appendChild(card);
-            gsap.from(card, { duration: 0.8, opacity: 0, y: 50, delay: index * 0.2, ease: 'power3.out' });
-        });
-
-        // EmailJS Setup
-        // IMPORTANT: Replace 'YOUR_USER_ID', 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID' with your actual EmailJS credentials
-        emailjs.init('YOUR_USER_ID');
-
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const status = document.getElementById('message-status');
-            status.style.display = 'block';
-            status.textContent = 'Sending...';
-            status.style.color = '#00bfff';
-
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-                .then(() => {
-                    status.textContent = 'Message sent successfully!';
-                    status.style.color = '#00ff00';
-                    this.reset();
-                    setTimeout(() => { status.style.display = 'none'; }, 5000);
-                }, (error) => {
-                    status.textContent = 'Failed to send message. Please try again.';
-                    status.style.color = '#ff0000';
-                    console.error('EmailJS error:', error);
                 });
+            }, { threshold: 0.1 });
+
+            observer.observe(document.getElementById('skills'));
+            observer.observe(document.getElementById('github'));
+        }
+
+        // Initialize Everything
+        document.addEventListener('DOMContentLoaded', () => {
+            initHeroAnimation();
+            initScrollReveal();
+            renderSkills();
+            renderProjects();
+            renderGitHubStats();
+            initContactForm();
+            initCardStagger();
         });
     </script>
 </body>
