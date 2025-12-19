@@ -1,13 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ehsan Shaikh | Portfolio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ehsan Shaikh - Frontend & Full-Stack Web Developer Portfolio</title>
+    <meta name="description" content="Ehsan Shaikh's premium portfolio as a Frontend and Full-Stack Web Developer in India, pursuing BSc in Information Technology. Explore real-world projects, skills, and contact for opportunities.">
+    <meta name="keywords" content="Ehsan Shaikh, web developer portfolio, frontend developer, full-stack developer, BSc IT, India, developer internship">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ehsan Shaikh - Frontend & Full-Stack Web Developer Portfolio">
+    <meta property="og:description" content="Discover Ehsan Shaikh's professional portfolio showcasing expertise in web development with real-world projects.">
+    <meta property="og:image" content="ahsanphoto.png">
+    <meta property="og:url" content="https://ehsanshaikh.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ehsan Shaikh - Frontend & Full-Stack Web Developer Portfolio">
+    <meta name="twitter:description" content="Discover Ehsan Shaikh's professional portfolio showcasing expertise in web development with real-world projects.">
+    <meta name="twitter:image" content="ahsanphoto.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --accent-blue: #00bfff;
+            --accent-purple: #8a2be2;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --gradient: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glow: 0 0 15px rgba(0, 191, 255, 0.3);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            scroll-behavior: smooth;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--gradient);
+            color: var(--text-primary);
+            border-radius: 50px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: var(--glow);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.6s;
+            border-radius: 50%;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.5);
+        }
+
+        .btn:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: transform 0.5s ease;
+        }
+
+        .glass:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Hero */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(10,10,10,0.8), var(--bg-primary));
+            z-index: 1;
+        }
+
+        #hero > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        #hero h2 {
+            font-size: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-blue);
+            box-shadow: var(--glow);
+            animation: float 4s ease-in-out infinite;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.6);
+        }
+
+        .ctas {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* About */
+        #about p {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        /* Skills */
+        #skills .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            text-align: center;
+            padding: 30px;
+            background: var(--glass-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.4s, box-shadow 0.4s;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05);
+            box-shadow: var(--glow);
+        }
+
+        .skill-card.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Projects */
+        #projects .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .project-card ul {
+            list-style: none;
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .project-card li {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* GitHub */
+        #github .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: var(--glass-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.4s, box-shadow 0.4s;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .stat-card.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+            box-shadow: var(--glow);
+        }
+
+        .stat-card strong {
+            font-size: 2rem;
+            display: block;
+        }
+
+        #github .btn {
+            display: block;
+            max-width: 300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Contact */
+        #contact form {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        #contact input, #contact textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: box-shadow 0.3s;
+        }
+
+        #contact input:focus, #contact textarea:focus {
+            box-shadow: var(--glow);
+            outline: none;
+        }
+
+        #contact button {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        #message-status {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 300;
+            display: none;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .contact-info a {
+            margin: 0 15px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--bg-secondary);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            #hero h1 { font-size: 5rem; }
+            #hero h2 { font-size: 2.5rem; }
+            .profile-photo { width: 220px; height: 220px; }
+        }
+    </style>
+</head>
+<body>
+    <section id="hero">
+        <img src="ahsanphoto.png" alt="Ehsan Shaikh Profile" class="profile-photo">
+        <h1>Ehsan Shaikh</h1>
+        <h2>Frontend / Full-Stack Web Developer</h2>
+        <p>Pursuing BSc in Information Technology (BSc IT) with real-world production projects experience in India.</p>
+        <div class="ctas">
+            <a href="#projects" class="btn">View Projects</a>
+            <a href="Ehsan_Shaikh_Resume.pdf" class="btn" download>Download Resume</a>
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+    </section>
+
+    <section id="about" class="glass">
+        <h2>About Me</h2>
+        <p>As a dedicated Frontend and Full-Stack Web Developer pursuing my BSc in Information Technology, I bring hands-on experience from real-world production projects. Based in India, I focus on crafting elegant, performant web solutions that blend innovative design with robust functionality. My passion lies in turning complex ideas into seamless user experiences, always prioritizing clean code and scalability.</p>
+    </section>
+
+    <section id="skills" class="glass">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">HTML</div>
+            <div class="skill-card">CSS</div>
+            <div class="skill-card">JavaScript</div>
+            <div class="skill-card">React</div>
+            <div class="skill-card">Tailwind CSS</div>
+            <div class="skill-card">Node.js</div>
+            <div class="skill-card">MongoDB</div>
+            <div class="skill-card">Git & GitHub</div>
+            <div class="skill-card">API Integration</div>
+            <div class="skill-card">Automation basics</div>
+        </div>
+    </section>
+
+    <section id="projects" class="glass">
+        <h2>Projects</h2>
+        <div class="projects-grid"></div>
+    </section>
+
+    <section id="github" class="glass">
+        <h2>GitHub</h2>
+        <div class="stats-grid">
+            <div class="stat-card"><strong>7</strong> Repositories</div>
+            <div class="stat-card"><strong>1</strong> Followers</div>
+            <div class="stat-card"><strong>177</strong> Contributions</div>
+        </div>
+        <a href="https://github.com/Zapcart" target="_blank" class="btn">Visit GitHub Profile</a>
+    </section>
+
+    <section id="contact" class="glass">
+        <h2>Contact</h2>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+        <p id="message-status"></p>
+        <div class="contact-info">
+            <a href="https://wa.me/919960824574" target="_blank" class="btn">WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© Ehsan Shaikh</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        // Hero Entrance
+        gsap.timeline()
+            .to('#hero .profile-photo', { duration: 1, opacity: 1, y: 0, ease: 'power3.out' })
+            .to('#hero h1', { duration: 0.8, opacity: 1, scale: 1, ease: 'power3.out' }, '-=0.5')
+            .to('#hero h2', { duration: 0.8, opacity: 1, y: 0, ease: 'power3.out' }, '-=0.5')
+            .to('#hero p', { duration: 0.8, opacity: 1, y: 0, ease: 'power3.out' }, '-=0.5')
+            .to('#hero .ctas', { duration: 0.8, opacity: 1, y: 0, ease: 'power3.out' }, '-=0.5');
+
+        // Scroll Reveals
+        const sections = document.querySelectorAll('section:not(#hero)');
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.id === 'skills' || entry.target.id === 'github') {
+                        gsap.to(entry.target.querySelectorAll('.skill-card, .stat-card'), {
+                            duration: 0.5,
+                            opacity: 1,
+                            scale: 1,
+                            stagger: 0.1,
+                            ease: 'power2.out'
+                        });
+                    }
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => revealObserver.observe(section));
+
+        // Projects Dynamic
+        const projectsData = [
+            {
+                title: 'Book Your Villa',
+                desc: 'A luxurious villa booking platform with seamless user experience and responsive design.',
+                tech: ['HTML5', 'CSS3', 'JavaScript'],
+                github: 'https://github.com/Zapcart/Book-Your-Villa'
+            },
+            {
+                title: 'Zapcart',
+                desc: 'An advanced e-commerce cart system optimized for performance and scalability.',
+                tech: ['HTML', 'CSS', 'JavaScript'],
+                github: 'https://github.com/Zapcart/zapcart'
+            },
+            {
+                title: 'E-Sports Platform',
+                desc: 'A comprehensive platform for e-sports events, tournaments, and community engagement.',
+                tech: ['React', 'Node.js', 'MongoDB'],
+                github: 'https://github.com/Zapcart'
+            },
+            {
+                title: 'Goodtimesvilla',
+                desc: 'Premium villa rental service with elegant UI and efficient booking management.',
+                tech: ['HTML5', 'CSS3', 'JavaScript'],
+                github: 'https://github.com/Zapcart/Goodtimesvilla'
+            }
+        ];
+
+        const projectsGrid = document.querySelector('#projects .projects-grid');
+        projectsData.forEach((project, index) => {
+            const card = document.createElement('div');
+            card.classList.add('project-card', 'glass');
+            card.innerHTML = `
+                <h3>${project.title}</h3>
+                <p>${project.desc}</p>
+                <ul>${project.tech.map(t => `<li>${t}</li>`).join('')}</ul>
+                <a href="${project.github}" target="_blank" class="btn">GitHub</a>
+            `;
+            projectsGrid.appendChild(card);
+            gsap.from(card, { duration: 0.8, opacity: 0, y: 50, delay: index * 0.2, ease: 'power3.out' });
+        });
+
+        // EmailJS Setup
+        // IMPORTANT: Replace 'YOUR_USER_ID', 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID' with your actual EmailJS credentials
+        emailjs.init('YOUR_USER_ID');
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const status = document.getElementById('message-status');
+            status.style.display = 'block';
+            status.textContent = 'Sending...';
+            status.style.color = '#00bfff';
+
+            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+                .then(() => {
+                    status.textContent = 'Message sent successfully!';
+                    status.style.color = '#00ff00';
+                    this.reset();
+                    setTimeout(() => { status.style.display = 'none'; }, 5000);
+                }, (error) => {
+                    status.textContent = 'Failed to send message. Please try again.';
+                    status.style.color = '#ff0000';
+                    console.error('EmailJS error:', error);
+                });
+        });
+    </script>
+</body>
 </html>
