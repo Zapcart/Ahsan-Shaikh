@@ -65,9 +65,14 @@
             transition: all 0.4s;
             position: relative;
             overflow: hidden;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
         }
 
         .btn:hover { transform: translateY(-5px); box-shadow: 0 0 30px rgba(0, 255, 255, 0.6); }
+        .btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 
         .glass {
             background: var(--glass-bg);
@@ -155,6 +160,38 @@
             font-size: 0.9rem;
         }
 
+        /* Contact Form Specific */
+        #contact-form input,
+        #contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 12px;
+            background: #333;
+            color: #fff;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        #contact-form input:focus,
+        #contact-form textarea:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        #contact-form textarea { resize: vertical; }
+
+        #form-status {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            min-height: 28px;
+        }
+
+        .success { color: #00ff00; }
+        .error { color: #ff4444; }
+
         /* Footer */
         footer {
             text-align: center;
@@ -166,6 +203,7 @@
         @media (max-width: 768px) {
             #hero h1 { font-size: 3.5rem; }
             .profile-photo { width: 160px; height: 160px; }
+            section { padding: 80px 20px; }
         }
     </style>
 </head>
@@ -255,13 +293,14 @@
 
     <section id="contact" class="glass">
         <h2>Contact Me</h2>
-        <form style="max-width:600px;margin:0 auto;">
-            <input type="text" placeholder="Your Name" style="width:100%;padding:15px;margin:10px 0;border-radius:12px;background:#333;color:#fff;border:none;" required>
-            <input type="email" placeholder="Your Email" style="width:100%;padding:15px;margin:10px 0;border-radius:12px;background:#333;color:#fff;border:none;" required>
-            <textarea placeholder="Your Message" rows="6" style="width:100%;padding:15px;margin:10px 0;border-radius:12px;background:#333;color:#fff;border:none;resize:vertical;" required></textarea>
-            <button type="submit" class="btn" style="width:100%;">Send Message</button>
+        <form id="contact-form" style="max-width:600px;margin:0 auto;">
+            <input type="text" id="from_name" name="from_name" placeholder="Your Name" required>
+            <input type="email" id="from_email" name="from_email" placeholder="Your Email" required>
+            <textarea id="message" name="message" placeholder="Your Message" rows="6" required></textarea>
+            <button type="submit" id="submit-btn" class="btn">Send Message</button>
         </form>
-        <p style="text-align:center;margin-top:30px;">
+        <div id="form-status"></div>
+        <p style="text-align:center;margin-top:40px;">
             <a href="https://wa.me/919960824574" target="_blank" class="btn">WhatsApp Me</a>
         </p>
     </section>
@@ -270,5 +309,71 @@
         <p>© 2025 Ehsan Shaikh. All rights reserved.</p>
     </footer>
 
+    <!-- EmailJS CDN -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        // ========================
+        // EMAILJS INTEGRATION
+        // ========================
+        // Public Key: r3XP05k5dGR_1LzFs
+        // Service ID: service_semjs1c
+        // Template ID: template_a5d68vo
+        // Template variables: from_name, from_email, message
+
+        (function() {
+            // Initialize EmailJS with your public key
+            emailjs.init("r3XP05k5dGR_1LzFs");
+        })();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const statusDiv = document.getElementById('form-status');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent page reload
+
+                // Validate fields (browser required already helps, but extra check)
+                const name = document.getElementById('from_name').value.trim();
+                const email = document.getElementById('from_email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (!name || !email || !message) {
+                    showStatus('Please fill in all fields.', 'error');
+                    return;
+                }
+
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                showStatus('Sending your message...', '');
+
+                // Send email using EmailJS
+                emailjs.send('service_semjs1c', 'template_a5d68vo', {
+                    from_name: name,
+                    from_email: email,
+                    message: message
+                })
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    showStatus('Message sent successfully! Thank you.', 'success');
+                    form.reset();
+                }, function(error) {
+                    console.error('FAILED...', error);
+                    showStatus('Failed to send message. Please try again later.', 'error');
+                })
+                .finally(function() {
+                    // Re-enable button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                });
+            });
+
+            function showStatus(message, type) {
+                statusDiv.textContent = message;
+                statusDiv.className = type; // success or error class for color
+            }
+        });
+    </script>
 </body>
 </html>
