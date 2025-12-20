@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ehsan Shaikh - Frontend & Full-Stack Developer</title>
     <meta name="description" content="Advanced portfolio of Ehsan Shaikh, Frontend and Full-Stack Web Developer. Modern design with animations and real-world projects.">
-    <!-- Open Graph / Twitter same as before -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
@@ -14,7 +13,6 @@
             --bg-secondary: #121212;
             --accent-teal: #00ffff;
             --accent-purple: #a78bfa;
-            --accent-blue: #007bff;
             --text-primary: #ffffff;
             --text-secondary: #cccccc;
             --glass-bg: rgba(18, 18, 18, 0.6);
@@ -29,7 +27,7 @@
             overflow-x: hidden;
             line-height: 1.6;
         }
-        section { padding: 120px 20px; max-width: 1300px; margin: 0 auto; opacity: 0; transition: opacity 1s ease, transform 1s ease; }
+        section { padding: 120px 20px; max-width: 1300px; margin: 0 auto; opacity: 0; transform: translateY(50px); transition: opacity 1s ease, transform 1s ease; }
         section.visible { opacity: 1; transform: translateY(0); }
         h1, h2 { text-align: center; margin-bottom: 60px; }
         .btn {
@@ -123,6 +121,7 @@
             outline: none;
             box-shadow: var(--glow-teal);
         }
+        #form-status { text-align: center; margin-top: 20px; min-height: 30px; font-weight: 600; }
         footer { text-align: center; padding: 50px; background: var(--bg-secondary); color: var(--text-secondary); }
         @media (max-width: 768px) {
             #hero h1 { font-size: 3.8rem; }
@@ -236,10 +235,11 @@
         <p>© 2025 Ehsan Shaikh. All rights reserved.</p>
     </footer>
 
-    <!-- EmailJS same as before -->
+    <!-- EmailJS -->
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        emailjs.init("r3XP05k5dGR_1LzFs");
+        // Latest Public Key
+        emailjs.init("AtCgBxp7Wiywc80-E");
 
         // Typing Effect
         const typingText = document.querySelector('.typing');
@@ -253,9 +253,9 @@
                 setTimeout(type, 100);
             }
         }
-        window.onload = type;
+        window.addEventListener('load', type);
 
-        // Particles
+        // Particles Background
         particlesJS('particles-js', {
             particles: {
                 number: { value: 80 },
@@ -272,7 +272,7 @@
             }
         });
 
-        // Scroll Fade In
+        // Scroll Animations
         const sections = document.querySelectorAll('section');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -283,42 +283,39 @@
         }, { threshold: 0.1 });
         sections.forEach(sec => observer.observe(sec));
 
-        // Contact Form same
+        // Contact Form
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('contact-form');
             const submitBtn = document.getElementById('submit-btn');
             const statusDiv = document.getElementById('form-status');
+
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
-                const name = document.getElementById('from_name').value.trim();
-                const email = document.getElementById('from_email').value.trim();
-                const message = document.getElementById('message').value.trim();
-                if (!name || !email || !message) {
-                    showStatus('Please fill all fields.', 'error');
-                    return;
-                }
+
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Sending...';
-                showStatus('Sending...', '');
+                statusDiv.textContent = 'Sending your message...';
+                statusDiv.style.color = '#00ffff';
+
                 emailjs.send('service_semjs1c', 'template_a5d68vo', {
-                    from_name: name,
-                    from_email: email,
-                    message: message
-                }).then(() => {
-                    showStatus('Message sent successfully!', 'success');
+                    from_name: document.getElementById('from_name').value,
+                    from_email: document.getElementById('from_email').value,
+                    message: document.getElementById('message').value
+                })
+                .then(function() {
+                    statusDiv.textContent = 'Message sent successfully! Jaldi reply karunga ❤️';
+                    statusDiv.style.color = '#00ff00';
                     form.reset();
-                }, (error) => {
-                    showStatus('Failed. Try again.', 'error');
-                }).finally(() => {
+                }, function(error) {
+                    console.log('EmailJS Error:', error);
+                    statusDiv.innerHTML = 'Failed to send!<br>Check:<br>1. Gmail connected in EmailJS dashboard?<br>2. Permissions allowed?';
+                    statusDiv.style.color = '#ff4444';
+                })
+                .finally(function() {
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Send Message';
                 });
             });
-            function showStatus(msg, type) {
-                statusDiv.textContent = msg;
-                statusDiv.className = type;
-                statusDiv.style.color = type === 'success' ? '#00ff00' : '#ff4444';
-            }
         });
     </script>
 </body>
