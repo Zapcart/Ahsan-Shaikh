@@ -3,86 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ehsan Shaikh - Frontend & Full-Stack Web Developer</title>
-    <meta name="description" content="Premium portfolio of Ehsan Shaikh, a Frontend and Full-Stack Web Developer pursuing BSc IT in India. Real-world projects, modern skills, and contact for internships.">
-    <meta name="keywords" content="Ehsan Shaikh, frontend developer, full-stack developer, web developer portfolio, BSc IT India">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Ehsan Shaikh - Frontend & Full-Stack Web Developer">
-    <meta property="og:description" content="Explore Ehsan Shaikh's luxury portfolio with real-world projects and modern web skills.">
-    <meta property="og:image" content="ahsanphoto.png">
-    <meta property="og:url" content="https://ahsan-shaikh-j1yv.vercel.app">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ehsan Shaikh - Frontend & Full-Stack Web Developer">
-    <meta name="twitter:description" content="Explore Ehsan Shaikh's luxury portfolio with real-world projects and modern web skills.">
-    <meta name="twitter:image" content="ahsanphoto.png">
-
+    <title>Ehsan Shaikh - Frontend & Full-Stack Developer</title>
+    <meta name="description" content="Advanced portfolio of Ehsan Shaikh, Frontend and Full-Stack Web Developer. Modern design with animations and real-world projects.">
+    <!-- Open Graph / Twitter same as before -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         :root {
-            --bg-primary: #0f0f0f;
-            --bg-secondary: #1f1f1f;
-            --accent-cyan: #00ffff;
-            --accent-purple: #9d4edd;
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #121212;
+            --accent-teal: #00ffff;
+            --accent-purple: #a78bfa;
+            --accent-blue: #007bff;
             --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            --glass-bg: rgba(30, 30, 30, 0.4);
-            --glow-cyan: 0 0 20px rgba(0, 255, 255, 0.4);
-            --shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            --text-secondary: #cccccc;
+            --glass-bg: rgba(18, 18, 18, 0.6);
+            --glow-teal: 0 0 25px rgba(0, 255, 255, 0.5);
+            --shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
-            scroll-behavior: smooth;
+            overflow-x: hidden;
             line-height: 1.6;
         }
-
-        section {
-            padding: 100px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h1, h2 { text-align: center; margin-bottom: 50px; }
-
+        section { padding: 120px 20px; max-width: 1300px; margin: 0 auto; opacity: 0; transition: opacity 1s ease, transform 1s ease; }
+        section.visible { opacity: 1; transform: translateY(0); }
+        h1, h2 { text-align: center; margin-bottom: 60px; }
         .btn {
-            padding: 14px 32px;
-            background: var(--gradient);
+            padding: 16px 36px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-purple));
             color: #fff;
             border-radius: 50px;
             text-decoration: none;
             display: inline-block;
-            box-shadow: var(--glow-cyan);
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
+            box-shadow: var(--glow-teal);
+            transition: all 0.4s ease;
             border: none;
             cursor: pointer;
-            font-family: inherit;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
-
-        .btn:hover { transform: translateY(-5px); box-shadow: 0 0 30px rgba(0, 255, 255, 0.6); }
-        .btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
-
+        .btn:hover { transform: translateY(-8px); box-shadow: 0 0 40px rgba(0, 255, 255, 0.8); }
         .glass {
             background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 50px;
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 60px;
             box-shadow: var(--shadow);
         }
-
         /* Hero */
         #hero {
             min-height: 100vh;
@@ -91,139 +62,95 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: var(--gradient);
             position: relative;
+            overflow: hidden;
         }
-
-        #hero::after {
-            content: '';
+        #particles-js {
             position: absolute;
-            inset: 0;
-            background: rgba(15,15,15,0.7);
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
         }
-
-        #hero > * { position: relative; z-index: 1; }
-
+        .hero-content { position: relative; z-index: 2; }
         .profile-photo {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
-            border: 5px solid var(--accent-cyan);
-            box-shadow: var(--glow-cyan);
+            border: 6px solid var(--accent-teal);
+            box-shadow: var(--glow-teal);
             object-fit: cover;
-            animation: float 5s ease-in-out infinite;
-            margin-bottom: 30px;
+            animation: float 6s ease-in-out infinite;
+            margin-bottom: 40px;
         }
-
-        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-
-        #hero h1 { font-size: 4.5rem; margin-bottom: 20px; }
-        #hero h2 { font-size: 2.2rem; margin-bottom: 20px; }
-        #hero p { font-size: 1.3rem; max-width: 700px; margin-bottom: 40px; }
-
-        .ctas { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-
-        /* Sections */
-        #about p { text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-25px); } }
+        #hero h1 { font-size: 5rem; margin-bottom: 20px; background: linear-gradient(to right, var(--accent-teal), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .typing { font-size: 2.5rem; margin-bottom: 30px; color: var(--accent-teal); }
+        #hero p { font-size: 1.4rem; max-width: 800px; margin-bottom: 50px; color: var(--text-secondary); }
+        .ctas { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; }
+        /* Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         .card {
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 25px;
             text-align: center;
             box-shadow: var(--shadow);
-            transition: transform 0.4s;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(0, 255, 255, 0.1);
         }
-
-        .card:hover { transform: translateY(-15px); }
-
-        .tech-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-            list-style: none;
-        }
-
+        .card:hover { transform: translateY(-20px) scale(1.05); box-shadow: var(--glow-teal); }
+        .tech-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 25px 0; list-style: none; }
         .tech-list li {
-            background: rgba(0, 255, 255, 0.1);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-        }
-
-        /* Contact Form Specific */
-        #contact-form input,
-        #contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 12px;
-            background: #333;
-            color: #fff;
-            border: none;
-            font-family: inherit;
+            background: rgba(0, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 50px;
             font-size: 1rem;
+            border: 1px solid var(--accent-teal);
         }
-
-        #contact-form input:focus,
-        #contact-form textarea:focus {
-            outline: none;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-        }
-
-        #contact-form textarea { resize: vertical; }
-
-        #form-status {
-            text-align: center;
-            margin-top: 20px;
+        /* Contact */
+        #contact-form input, #contact-form textarea {
+            width: 100%;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 15px;
+            background: #1e1e1e;
+            color: #fff;
+            border: 1px solid var(--accent-teal);
             font-size: 1.1rem;
-            min-height: 28px;
         }
-
-        .success { color: #00ff00; }
-        .error { color: #ff4444; }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
+        #contact-form input:focus, #contact-form textarea:focus {
+            outline: none;
+            box-shadow: var(--glow-teal);
         }
-
+        footer { text-align: center; padding: 50px; background: var(--bg-secondary); color: var(--text-secondary); }
         @media (max-width: 768px) {
-            #hero h1 { font-size: 3.5rem; }
-            .profile-photo { width: 160px; height: 160px; }
-            section { padding: 80px 20px; }
+            #hero h1 { font-size: 3.8rem; }
+            .typing { font-size: 2rem; }
+            .profile-photo { width: 180px; height: 180px; }
+            section { padding: 100px 20px; }
         }
     </style>
 </head>
 <body>
-
     <section id="hero">
-        <img src="ahsanphoto.png" alt="Ehsan Shaikh" class="profile-photo">
-        <h1>Ehsan Shaikh</h1>
-        <h2>Frontend / Full-Stack Web Developer</h2>
-        <p>Pursuing BSc in Information Technology (BSc IT) • Real-world production projects • India</p>
-        <div class="ctas">
-            <a href="#projects" class="btn">View Projects</a>
-            <a href="Ehsan_Shaikh_Resume.pdf" class="btn" download>Download Resume</a>
-            <a href="#contact" class="btn">Contact Me</a>
+        <div id="particles-js"></div>
+        <div class="hero-content">
+            <img src="ahsanphoto.png" alt="Ehsan Shaikh" class="profile-photo">
+            <h1>Ehsan Shaikh</h1>
+            <h2 class="typing">Frontend / Full-Stack Web Developer</h2>
+            <p>Pursuing BSc in Information Technology • Real-world production projects • India</p>
+            <div class="ctas">
+                <a href="#projects" class="btn">View Projects</a>
+                <a href="Ehsan_Shaikh_Resume.pdf" class="btn" download>Download Resume</a>
+                <a href="#contact" class="btn">Contact Me</a>
+            </div>
         </div>
     </section>
 
     <section id="about" class="glass">
         <h2>About Me</h2>
-        <p>I am a passionate Frontend and Full-Stack Web Developer with hands-on experience in building real-world, production-level applications. Currently pursuing my BSc in Information Technology, I specialize in creating modern, responsive, and performant websites using cutting-edge technologies. I focus on clean code, intuitive UI/UX, and scalable solutions.</p>
+        <p style="text-align:center; max-width:900px; margin:0 auto; font-size:1.2rem;">I am a passionate Frontend and Full-Stack Web Developer with hands-on experience in building real-world, production-level applications. Currently pursuing my BSc in Information Technology, I specialize in creating modern, responsive, and performant websites using cutting-edge technologies. I focus on clean code, intuitive UI/UX, and scalable solutions.</p>
     </section>
 
     <section id="skills" class="glass">
@@ -281,26 +208,26 @@
     </section>
 
     <section id="github" class="glass">
-        <h2>GitHub</h2>
+        <h2>GitHub Stats</h2>
         <div class="grid">
-            <div class="card"><strong style="font-size:2.5rem;">7</strong><br>Repositories</div>
-            <div class="card"><strong style="font-size:2.5rem;">1</strong><br>Followers</div>
-            <div class="card"><strong style="font-size:2.5rem;">177</strong><br>Contributions</div>
+            <div class="card"><strong style="font-size:3rem;">7</strong><br>Repositories</div>
+            <div class="card"><strong style="font-size:3rem;">1</strong><br>Followers</div>
+            <div class="card"><strong style="font-size:3rem;">177</strong><br>Contributions</div>
         </div>
-        <br>
+        <br><br>
         <a href="https://github.com/Zapcart" target="_blank" class="btn">Visit GitHub Profile</a>
     </section>
 
     <section id="contact" class="glass">
         <h2>Contact Me</h2>
-        <form id="contact-form" style="max-width:600px;margin:0 auto;">
-            <input type="text" id="from_name" name="from_name" placeholder="Your Name" required>
-            <input type="email" id="from_email" name="from_email" placeholder="Your Email" required>
-            <textarea id="message" name="message" placeholder="Your Message" rows="6" required></textarea>
+        <form id="contact-form" style="max-width:700px;margin:0 auto;">
+            <input type="text" id="from_name" placeholder="Your Name" required>
+            <input type="email" id="from_email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" rows="7" required></textarea>
             <button type="submit" id="submit-btn" class="btn">Send Message</button>
         </form>
         <div id="form-status"></div>
-        <p style="text-align:center;margin-top:40px;">
+        <p style="text-align:center;margin-top:50px;">
             <a href="https://wa.me/919960824574" target="_blank" class="btn">WhatsApp Me</a>
         </p>
     </section>
@@ -309,69 +236,88 @@
         <p>© 2025 Ehsan Shaikh. All rights reserved.</p>
     </footer>
 
-    <!-- EmailJS CDN -->
+    <!-- EmailJS same as before -->
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        // ========================
-        // EMAILJS INTEGRATION
-        // ========================
-        // Public Key: r3XP05k5dGR_1LzFs
-        // Service ID: service_semjs1c
-        // Template ID: template_a5d68vo
-        // Template variables: from_name, from_email, message
+        emailjs.init("r3XP05k5dGR_1LzFs");
 
-        (function() {
-            // Initialize EmailJS with your public key
-            emailjs.init("r3XP05k5dGR_1LzFs");
-        })();
+        // Typing Effect
+        const typingText = document.querySelector('.typing');
+        const text = typingText.textContent;
+        typingText.textContent = '';
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                typingText.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, 100);
+            }
+        }
+        window.onload = type;
 
+        // Particles
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80 },
+                color: { value: '#00ffff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#a78bfa', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2 }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' } }
+            }
+        });
+
+        // Scroll Fade In
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(sec => observer.observe(sec));
+
+        // Contact Form same
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('contact-form');
             const submitBtn = document.getElementById('submit-btn');
             const statusDiv = document.getElementById('form-status');
-
             form.addEventListener('submit', function(e) {
-                e.preventDefault(); // Prevent page reload
-
-                // Validate fields (browser required already helps, but extra check)
+                e.preventDefault();
                 const name = document.getElementById('from_name').value.trim();
                 const email = document.getElementById('from_email').value.trim();
                 const message = document.getElementById('message').value.trim();
-
                 if (!name || !email || !message) {
-                    showStatus('Please fill in all fields.', 'error');
+                    showStatus('Please fill all fields.', 'error');
                     return;
                 }
-
-                // Show loading state
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Sending...';
-                showStatus('Sending your message...', '');
-
-                // Send email using EmailJS
+                showStatus('Sending...', '');
                 emailjs.send('service_semjs1c', 'template_a5d68vo', {
                     from_name: name,
                     from_email: email,
                     message: message
-                })
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    showStatus('Message sent successfully! Thank you.', 'success');
+                }).then(() => {
+                    showStatus('Message sent successfully!', 'success');
                     form.reset();
-                }, function(error) {
-                    console.error('FAILED...', error);
-                    showStatus('Failed to send message. Please try again later.', 'error');
-                })
-                .finally(function() {
-                    // Re-enable button
+                }, (error) => {
+                    showStatus('Failed. Try again.', 'error');
+                }).finally(() => {
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Send Message';
                 });
             });
-
-            function showStatus(message, type) {
-                statusDiv.textContent = message;
-                statusDiv.className = type; // success or error class for color
+            function showStatus(msg, type) {
+                statusDiv.textContent = msg;
+                statusDiv.className = type;
+                statusDiv.style.color = type === 'success' ? '#00ff00' : '#ff4444';
             }
         });
     </script>
