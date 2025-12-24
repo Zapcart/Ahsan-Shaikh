@@ -106,6 +106,10 @@ body {
     border: 1px solid transparent;
 }
 
+.btn:hover {
+    transform: translateY(-3px);
+}
+
 .btn-primary {
     background-color: var(--primary-color);
     color: #fff;
@@ -203,7 +207,6 @@ body {
     background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
 }
 
-/* About Section */
 .about-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -226,7 +229,6 @@ body {
     box-shadow: 0 0 20px var(--glow-color);
 }
 
-/* Skills Section */
 .skills-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -270,7 +272,6 @@ body {
     color: var(--accent-color);
 }
 
-/* Projects Section */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -284,7 +285,14 @@ body {
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow 0.3s ease;
+}
+
+.project-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .project-card:hover {
@@ -323,7 +331,6 @@ body {
     margin-right: 0.5rem;
 }
 
-/* Experience Section */
 .experience-timeline {
     position: relative;
     max-width: 800px;
@@ -382,7 +389,6 @@ body {
     border-radius: 6px;
 }
 
-/* Contact Section */
 .contact-form {
     max-width: 700px;
     margin: 0 auto;
@@ -442,7 +448,6 @@ body {
     font-weight: 500;
 }
 
-/* Footer */
 .main-footer {
     text-align: center;
     padding: 2rem;
@@ -455,7 +460,6 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
 @media (max-width: 992px) {
     .about-grid {
         grid-template-columns: 1fr;
@@ -469,7 +473,7 @@ body {
 
 @media (max-width: 768px) {
     .nav-menu {
-        display: none; /* Add a proper mobile menu later */
+        display: none; 
     }
     .experience-timeline::after {
         left: 31px;
