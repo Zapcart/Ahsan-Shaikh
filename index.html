@@ -1,135 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ehsan Shaikh - Frontend & Full-Stack Developer</title>
-    <meta name="description" content="Advanced portfolio of Ehsan Shaikh, Frontend and Full-Stack Web Developer. Modern design with animations and real-world projects.">
+    <title>Ehsan Shaikh - Senior Full-Stack Developer</title>
+    <meta name="description" content="Senior developer portfolio for Ehsan Shaikh, a full-stack developer specializing in building enterprise-ready applications.">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <style>
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #121212;
-            --accent-teal: #00ffff;
-            --accent-purple: #a78bfa;
-            --text-primary: #ffffff;
-            --text-secondary: #cccccc;
-            --glass-bg: rgba(18, 18, 18, 0.6);
-            --glow-teal: 0 0 25px rgba(0, 255, 255, 0.5);
-            --shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-        section { padding: 120px 20px; max-width: 1300px; margin: 0 auto; opacity: 0; transform: translateY(50px); transition: opacity 1s ease, transform 1s ease; }
-        section.visible { opacity: 1; transform: translateY(0); }
-        h1, h2 { text-align: center; margin-bottom: 60px; }
-        .btn {
-            padding: 16px 36px;
-            background: linear-gradient(135deg, var(--accent-teal), var(--accent-purple));
-            color: #fff;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: var(--glow-teal);
-            transition: all 0.4s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
-        .btn:hover { transform: translateY(-8px); box-shadow: 0 0 40px rgba(0, 255, 255, 0.8); }
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            padding: 60px;
-            box-shadow: var(--shadow);
-        }
-        /* Hero */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-primary);
-        }
-        .hero-content { position: relative; z-index: 2; }
-        .profile-photo {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            border: 6px solid var(--accent-teal);
-            box-shadow: var(--glow-teal);
-            object-fit: cover;
-            animation: float 6s ease-in-out infinite;
-            margin-bottom: 40px;
-        }
-        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-25px); } }
-        #hero h1 { font-size: 5rem; margin-bottom: 20px; background: linear-gradient(to right, var(--accent-teal), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .typing { font-size: 2.5rem; margin-bottom: 30px; color: var(--accent-teal); }
-        #hero p { font-size: 1.4rem; max-width: 800px; margin-bottom: 50px; color: var(--text-secondary); }
-        .ctas { display: flex; gap: 25px; flex-wrap: wrap; justify-content: center; }
-        /* Cards */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            padding: 40px;
-            border-radius: 25px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: all 0.5s ease;
-            border: 1px solid rgba(0, 255, 255, 0.1);
-        }
-        .card:hover { transform: translateY(-20px) scale(1.05); box-shadow: var(--glow-teal); }
-        .tech-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 25px 0; list-style: none; }
-        .tech-list li {
-            background: rgba(0, 255, 255, 0.15);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 1rem;
-            border: 1px solid var(--accent-teal);
-        }
-        /* Contact */
-        #contact-form input, #contact-form textarea {
-            width: 100%;
-            padding: 18px;
-            margin: 20px 0;
-            border-radius: 15px;
-            background: #1e1e1e;
-            color: #fff;
-            border: 1px solid var(--accent-teal);
-            font-size: 1.1rem;
-        }
-        #contact-form input:focus, #contact-form textarea:focus {
-            outline: none;
-            box-shadow: var(--glow-teal);
-        }
-        #form-status { text-align: center; margin-top: 20px; min-height: 30px; font-weight: 600; }
-        footer { text-align: center; padding: 50px; background: var(--bg-secondary); color: var(--text-secondary); }
-        @media (max-width: 768px) {
-            #hero h1 { font-size: 3.8rem; }
-            .typing { font-size: 2rem; }
-            .profile-photo { width: 180px; height: 180px; }
-            section { padding: 100px 20px; }
-        }
-    </style>
 </head>
 <body>
     <section id="hero">
@@ -137,8 +16,8 @@
         <div class="hero-content">
             <img src="ahsanphoto.png" alt="Ehsan Shaikh" class="profile-photo">
             <h1>Ehsan Shaikh</h1>
-            <h2 class="typing">Frontend / Full-Stack Web Developer</h2>
-            <p>Pursuing BSc in Information Technology • Real-world production projects • India</p>
+            <h2 class="typing">Senior Full-Stack Developer</h2>
+            <p>I build robust, scalable, and enterprise-ready web applications.</p>
             <div class="ctas">
                 <a href="#projects" class="btn">View Projects</a>
                 <a href="Ehsan_Shaikh_Resume.pdf" class="btn" download>Download Resume</a>
@@ -149,72 +28,60 @@
 
     <section id="about" class="glass">
         <h2>About Me</h2>
-        <p style="text-align:center; max-width:900px; margin:0 auto; font-size:1.2rem;">I am a passionate Frontend and Full-Stack Web Developer with hands-on experience in building real-world, production-level applications. Currently pursuing my BSc in Information Technology, I specialize in creating modern, responsive, and performant websites using cutting-edge technologies. I focus on clean code, intuitive UI/UX, and scalable solutions.</p>
+        <p style="text-align:center; max-width:900px; margin:0 auto; font-size:1.2rem;">
+            I am a results-oriented Full-Stack Developer with a passion for solving complex problems and a strong focus on product thinking. I architect and build high-performance, scalable applications that deliver tangible business value. My expertise lies in creating clean, maintainable code and leading projects from concept to deployment.
+        </p>
     </section>
 
     <section id="skills" class="glass">
-        <h2>Skills</h2>
+        <h2>Skills & Tech Stack</h2>
         <div class="grid">
-            <div class="card">HTML</div>
-            <div class="card">CSS</div>
-            <div class="card">JavaScript</div>
-            <div class="card">React</div>
+            <div class="card">React / Next.js</div>
+            <div class="card">Node.js / Express</div>
+            <div class="card">Python / Django</div>
+            <div class="card">Firebase</div>
+            <div class="card">MongoDB / Firestore</div>
             <div class="card">Tailwind CSS</div>
-            <div class="card">Node.js</div>
-            <div class="card">MongoDB</div>
             <div class="card">Git & GitHub</div>
-            <div class="card">API Integration</div>
-            <div class="card">Automation Basics</div>
+            <div class="card">CI/CD</div>
+            <div class="card">System Architecture</div>
+        </div>
+    </section>
+
+    <section id="experience" class="glass">
+        <h2>Experience / Capabilities</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Scalable Architectures</h3>
+                <p>Designing and implementing scalable, cloud-native architectures on platforms like Firebase.</p>
+            </div>
+            <div class="card">
+                <h3>API Development</h3>
+                <p>Building secure, well-documented, and performant RESTful APIs.</p>
+            </div>
+            <div class="card">
+                <h3>Frontend Development</h3>
+                <p>Crafting responsive, high-performance user interfaces with modern frameworks.</p>
+            </div>
         </div>
     </section>
 
     <section id="projects" class="glass">
         <h2>Projects</h2>
         <div class="grid">
-            <div class="card">
-                <h3>Book Your Villa</h3>
-                <p>Luxury villa booking platform with responsive design and seamless user flow.</p>
-                <ul class="tech-list">
-                    <li>HTML5</li><li>CSS3</li><li>JavaScript</li>
-                </ul>
-                <a href="https://github.com/Zapcart/Book-Your-Villa" target="_blank" class="btn">GitHub</a>
-            </div>
-            <div class="card">
-                <h3>Zapcart</h3>
-                <p>Advanced e-commerce shopping cart system built for performance.</p>
-                <ul class="tech-list">
-                    <li>HTML</li><li>CSS</li><li>JavaScript</li>
-                </ul>
-                <a href="https://github.com/Zapcart/zapcart" target="_blank" class="btn">GitHub</a>
-            </div>
-            <div class="card">
-                <h3>E-Sports Platform</h3>
-                <p>Full-featured platform for tournaments and community management.</p>
-                <ul class="tech-list">
-                    <li>React</li><li>Node.js</li><li>MongoDB</li>
-                </ul>
-                <a href="https://github.com/Zapcart" target="_blank" class="btn">GitHub</a>
-            </div>
-            <div class="card">
-                <h3>Goodtimesvilla</h3>
-                <p>Premium villa rental website with elegant UI and booking system.</p>
-                <ul class="tech-list">
-                    <li>HTML5</li><li>CSS3</li><li>JavaScript</li>
-                </ul>
-                <a href="https://github.com/Zapcart/Goodtimesvilla" target="_blank" class="btn">GitHub</a>
-            </div>
+            <!-- GitHub projects will be dynamically loaded here -->
         </div>
     </section>
 
     <section id="github" class="glass">
         <h2>GitHub Stats</h2>
         <div class="grid">
-            <div class="card"><strong style="font-size:3rem;">7</strong><br>Repositories</div>
-            <div class="card"><strong style="font-size:3rem;">1</strong><br>Followers</div>
-            <div class="card"><strong style="font-size:3rem;">177</strong><br>Contributions</div>
+            <!-- GitHub stats will be dynamically loaded here -->
         </div>
         <br><br>
-        <a href="https://github.com/Zapcart" target="_blank" class="btn">Visit GitHub Profile</a>
+        <div style="text-align: center;">
+             <a href="https://github.com/Zapcart" target="_blank" class="btn">Visit GitHub Profile</a>
+        </div>
     </section>
 
     <section id="contact" class="glass">
@@ -226,97 +93,12 @@
             <button type="submit" id="submit-btn" class="btn">Send Message</button>
         </form>
         <div id="form-status"></div>
-        <p style="text-align:center;margin-top:50px;">
-            <a href="https://wa.me/919960824574" target="_blank" class="btn">WhatsApp Me</a>
-        </p>
     </section>
 
     <footer>
-        <p>© 2025 Ehsan Shaikh. All rights reserved.</p>
+        <p>© 2024 Ehsan Shaikh. All rights reserved.</p>
     </footer>
 
-    <!-- EmailJS -->
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        // Latest Public Key
-        emailjs.init("AtCgBxp7Wiywc80-E");
-
-        // Typing Effect
-        const typingText = document.querySelector('.typing');
-        const text = typingText.textContent;
-        typingText.textContent = '';
-        let i = 0;
-        function type() {
-            if (i < text.length) {
-                typingText.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, 100);
-            }
-        }
-        window.addEventListener('load', type);
-
-        // Particles Background
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80 },
-                color: { value: '#00ffff' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: '#a78bfa', opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 2 }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: { onhover: { enable: true, mode: 'repulse' } }
-            }
-        });
-
-        // Scroll Animations
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        sections.forEach(sec => observer.observe(sec));
-
-        // Contact Form
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('contact-form');
-            const submitBtn = document.getElementById('submit-btn');
-            const statusDiv = document.getElementById('form-status');
-
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-                statusDiv.textContent = 'Sending your message...';
-                statusDiv.style.color = '#00ffff';
-
-                emailjs.send('service_semjs1c', 'template_a5d68vo', {
-                    from_name: document.getElementById('from_name').value,
-                    from_email: document.getElementById('from_email').value,
-                    message: document.getElementById('message').value
-                })
-                .then(function() {
-                    statusDiv.textContent = 'Message sent successfully! Jaldi reply karunga ❤️';
-                    statusDiv.style.color = '#00ff00';
-                    form.reset();
-                }, function(error) {
-                    console.log('EmailJS Error:', error);
-                    statusDiv.innerHTML = 'Failed to send!<br>Check:<br>1. Gmail connected in EmailJS dashboard?<br>2. Permissions allowed?';
-                    statusDiv.style.color = '#ff4444';
-                })
-                .finally(function() {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message';
-                });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
