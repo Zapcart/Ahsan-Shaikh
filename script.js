@@ -1,172 +1,144 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Hide loading screen
+    const loadingScreen = document.getElementById('loading-screen');
+    window.addEventListener('load', () => {
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 500);
+    });
 
-document.addEventListener('DOMContentLoaded', function() {
-    // GitHub API Integration
-    fetchGitHubProjects();
+    // Particles.js
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: '#ffffff' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.5, random: false },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+            modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+        },
+        retina_detect: true
+    });
 
-    // Firebase Contact Form
-    setupContactForm();
+    // Typing effect
+    const typingElement = document.querySelector('.typing');
+    const textArray = ["Senior Full-Stack Developer", "React.js Expert", "Node.js Specialist"];
+    let textArrayIndex = 0;
+    let charIndex = 0;
 
-    // Scroll Animations
-    setupScrollAnimations();
+    function type() {
+        if (charIndex < textArray[textArrayIndex].length) {
+            typingElement.textContent += textArray[textArrayIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, 100);
+        } else {
+            setTimeout(erase, 2000);
+        }
+    }
 
-    // Typing Effect
-    setupTypingEffect();
+    function erase() {
+        if (charIndex > 0) {
+            typingElement.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(erase, 50);
+        } else {
+            textArrayIndex = (textArrayIndex + 1) % textArray.length;
+            setTimeout(type, 500);
+        }
+    }
 
-    // Particles Background
-    setupParticles();
-});
+    type();
 
-function fetchGitHubProjects() {
-    const username = 'Zapcart';
-    const projectsGrid = document.querySelector('#projects .grid');
-    const githubStats = document.querySelector('#github .grid');
-
-    fetch(`https://api.github.com/users/${username}/repos?sort=updated&direction=desc`)
+    // Fetch GitHub Repos
+    const projectsContainer = document.getElementById('projects-container');
+    fetch('https://api.github.com/users/Zapcart/repos?sort=updated&direction=desc')
         .then(response => response.json())
         .then(repos => {
-            projectsGrid.innerHTML = ''; // Clear existing projects
-            let repoCount = 0;
             repos.forEach(repo => {
-                if (repo.fork) return; // Skip forked repos
-                repoCount++;
                 const projectCard = document.createElement('div');
-                projectCard.classList.add('card');
-
-                let description = repo.description || 'No description provided.';
-                // Truncate long descriptions
-                if (description.length > 100) {
-                    description = description.substring(0, 100) + '...';
-                }
-
+                projectCard.className = 'project-card';
                 projectCard.innerHTML = `
                     <h3>${repo.name}</h3>
-                    <p>${description}</p>
-                    <ul class="tech-list">
-                        ${repo.language ? `<li>${repo.language}</li>` : ''}
-                    </ul>
+                    <p>${repo.description || 'No description available.'}</p>
+                    <div class="tech-stack">
+                        ${repo.language ? `<span>${repo.language}</span>` : ''}
+                    </div>
                     <a href="${repo.html_url}" target="_blank" class="btn">View on GitHub</a>
-                    ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="btn">Live Demo</a>` : ''}
                 `;
-                projectsGrid.appendChild(projectCard);
+                projectsContainer.appendChild(projectCard);
             });
-             if (githubStats) {
-                fetch(`https://api.github.com/users/${username}`)
-                    .then(response => response.json())
-                    .then(user => {
-                        githubStats.innerHTML = `
-                            <div class="card">
-                                <strong style="font-size:3rem;">${user.public_repos}</strong><br>Repositories
-                            </div>
-                            <div class="card">
-                                <strong style="font-size:3rem;">${user.followers}</strong><br>Followers
-                            </div>
-                        `;
-                    });
-            }
         })
-        .catch(error => {
-            console.error('Error fetching GitHub projects:', error);
-            projectsGrid.innerHTML = '<p style="color: #ff4444; text-align: center;">Failed to load projects from GitHub.</p>';
-        });
-}
+        .catch(error => console.error('Error fetching GitHub repos:', error));
 
-function setupContactForm() {
-    const form = document.getElementById('contact-form');
-    const submitBtn = document.getElementById('submit-btn');
-    const statusDiv = document.getElementById('form-status');
+    // EmailJS Contact Form
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
 
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
+    // Replace with your EmailJS credentials
+    const serviceID = 'service_semjs1c';
+    const templateID = 'template_a5d68vo';
+    const userID = 'AtCgBxp7Wiywc80-E';
 
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            statusDiv.textContent = 'Sending your message...';
-            statusDiv.style.color = 'var(--accent-teal)';
+    emailjs.init(userID);
 
-            const name = document.getElementById('from_name').value;
-            const email = document.getElementById('from_email').value;
-            const message = document.getElementById('message').value;
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-            // Replace with your Firebase Function URL
-            const firebaseFunctionUrl = '';
+        formStatus.textContent = 'Sending...';
 
-            fetch(firebaseFunctionUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name, email, message }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    statusDiv.textContent = 'Message sent successfully! I will get back to you shortly.';
-                    statusDiv.style.color = '#00ff00';
-                    form.reset();
-                } else {
-                    throw new Error(data.error || 'Something went wrong.');
-                }
-            })
-            .catch(error => {
-                console.error('Firebase function error:', error);
-                statusDiv.innerHTML = 'Failed to send message. Please set up your Firebase function URL in script.js';
-                statusDiv.style.color = '#ff4444';
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                formStatus.textContent = 'Message sent successfully!';
+                formStatus.style.color = 'green';
+                contactForm.reset();
+            }, (err) => {
+                formStatus.textContent = 'Failed to send message. Please try again later.';
+                formStatus.style.color = 'red';
+                console.error('EmailJS error:', err);
             });
+    });
+
+    // Smooth scroll and section reveal
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (this.hash !== "") {
+                e.preventDefault();
+                const hash = this.hash;
+                document.querySelector(hash).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
-    }
-}
+    });
 
-
-function setupScrollAnimations() {
     const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver((entries) => {
+    const revealSection = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
-    sections.forEach(sec => observer.observe(sec));
-}
+    };
 
-function setupTypingEffect() {
-    const typingText = document.querySelector('.typing');
-    if (typingText) {
-        const text = typingText.textContent;
-        typingText.textContent = '';
-        let i = 0;
-        function type() {
-            if (i < text.length) {
-                typingText.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, 100);
-            }
-        }
-        window.addEventListener('load', type);
-    }
-}
+    const sectionObserver = new IntersectionObserver(revealSection, {
+        root: null,
+        threshold: 0.15,
+    });
 
-function setupParticles() {
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80 },
-                color: { value: '#00ffff' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: '#a78bfa', opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 2 }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: { onhover: { enable: true, mode: 'repulse' } }
-            }
-        });
-    }
-}
+    sections.forEach(section => {
+        section.style.opacity = 0;
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        sectionObserver.observe(section);
+    });
+});
