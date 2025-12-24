@@ -19,29 +19,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Enhanced Project Description Generation ---
     function generateProjectDescription(repo) {
-        const name = repo.name.replace(/-/g, ' ').replace(/_/g, ' ');
-        const lang = repo.language || 'various technologies';
-        let description = '';
+        const name = repo.name.toLowerCase().replace(/-/g, '');
+        const lang = repo.language || 'key technologies';
 
-        // Heuristic-based description generation
-        if (name.toLowerCase().includes('portfolio')) {
-            description = `A personal portfolio website built with ${lang} to showcase my skills and projects, featuring a clean UI, responsive design, and dynamic content loading.`;
-        } else if (name.toLowerCase().includes('ecommerce') || name.toLowerCase().includes('cart') || name.toLowerCase().includes('shop')) {
-            description = `A full-featured e-commerce platform built using ${lang}. This project demonstrates my ability to handle complex user flows, product management, and scalable architecture.`;
-        } else if (name.toLowerCase().includes('api')) {
-            description = `A robust RESTful API developed with ${lang} to serve data efficiently. It's designed for high performance and showcases my back-end development and data modeling skills.`;
-        } else if (name.toLowerCase().includes('dashboard') || name.toLowerCase().includes('admin')) {
-            description = `An administrative dashboard application created using ${lang}. It provides tools for data visualization and management, emphasizing a clean user interface and efficient data handling.`;
-        } else if (name.toLowerCase().includes('blog')) {
-            description = `A content management system and blog engine built with ${lang}. This project highlights skills in database design, user authentication, and creating dynamic web applications.`;
-        } else if (name.toLowerCase().includes('ai')) {
-            description = `An application that leverages ${lang} to integrate AI-powered features, focusing on user interaction and scalable frontend or backend architecture to deliver intelligent responses.`;
-        } else {
-            description = `A ${lang}-based application, titled ${name}, that demonstrates modern software development practices. The project focuses on a clean, scalable, and maintainable codebase.`;
+        const projectDetails = {
+            'zapcart': `A full-featured e-commerce platform built with a focus on a seamless user experience. This project demonstrates complex state management, API integration, and a robust, scalable architecture using ${lang}.`,
+            'zaykafast': `A modern food ordering web application designed for speed and user convenience. It showcases my skills in building interactive UIs and handling real-time data, using ${lang} as a core technology.`,
+            'esports': `A dynamic E-Sports tournament and event platform. This application is built to manage user registrations, display live match data, and create an engaging community hub, leveraging the power of ${lang}.`,
+            'goodtimeproperties': `A luxury villa booking platform designed to provide an elegant and intuitive user experience. It features advanced search filters, a secure booking process, and a responsive design, all powered by ${lang}.`,
+            'bookyourvilla': `A comprehensive rental and booking system for villas. This project highlights my ability to create complex, data-driven applications with secure authentication and payment gateways, using ${lang}.`,
+            'driversathi': `A logistics and driver management system designed to optimize fleet operations. This application features real-time tracking, route planning, and dispatch management, showcasing my backend and database skills with ${lang}.`
+        };
+
+        const detailKey = Object.keys(projectDetails).find(key => name.includes(key));
+        if (detailKey) {
+            return projectDetails[detailKey];
         }
-        
-        return description;
+
+        if (repo.description && repo.description.length > 20) {
+            return repo.description;
+        }
+
+        return `A project titled '${repo.name.replace(/-/g, ' ')}' built using ${lang}. It showcases my skills in developing robust, scalable, and user-friendly web applications from concept to deployment.`;
     }
+
 
     // --- Fetch and Display GitHub Projects ---
     const GITHUB_USERNAME = 'Zapcart';
@@ -59,9 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const projectCard = document.createElement('div');
                 projectCard.classList.add('project-card');
 
-                const description = repo.description && repo.description.length > 20 
-                    ? repo.description 
-                    : generateProjectDescription(repo);
+                const description = generateProjectDescription(repo);
 
                 projectCard.innerHTML = `
                     <h3>${repo.name.replace(/-/g, ' ').replace(/_/g, ' ')}</h3>
