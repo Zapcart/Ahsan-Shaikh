@@ -1,144 +1,126 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Hide loading screen
-    const loadingScreen = document.getElementById('loading-screen');
-    window.addEventListener('load', () => {
-        loadingScreen.style.opacity = '0';
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
-        }, 500);
+
+    // Custom Cursor
+    const cursorDot = document.querySelector('[data-cursor-dot]');
+    const cursorOutline = document.querySelector('[data-cursor-outline]');
+
+    window.addEventListener('mousemove', (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, { duration: 500, fill: 'forwards' });
     });
 
-    // Particles.js
-    particlesJS('particles-js', {
-        particles: {
-            number: { value: 80, density: { enable: true, value_area: 800 } },
-            color: { value: '#ffffff' },
-            shape: { type: 'circle' },
-            opacity: { value: 0.5, random: false },
-            size: { value: 3, random: true },
-            line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
-            move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-        },
-        interactivity: {
-            detect_on: 'canvas',
-            events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-            modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-        },
-        retina_detect: true
-    });
+    // Fetch and Display GitHub Projects
+    const GITHUB_USERNAME = 'Zapcart';
+    const projectsGrid = document.getElementById('projects-grid');
 
-    // Typing effect
-    const typingElement = document.querySelector('.typing');
-    const textArray = ["Senior Full-Stack Developer", "React.js Expert", "Node.js Specialist"];
-    let textArrayIndex = 0;
-    let charIndex = 0;
+    async function fetchProjects() {
+        try {
+            const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&direction=desc`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const repos = await response.json();
 
-    function type() {
-        if (charIndex < textArray[textArrayIndex].length) {
-            typingElement.textContent += textArray[textArrayIndex].charAt(charIndex);
-            charIndex++;
-            setTimeout(type, 100);
-        } else {
-            setTimeout(erase, 2000);
-        }
-    }
+            projectsGrid.innerHTML = ''; // Clear placeholder
 
-    function erase() {
-        if (charIndex > 0) {
-            typingElement.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(erase, 50);
-        } else {
-            textArrayIndex = (textArrayIndex + 1) % textArray.length;
-            setTimeout(type, 500);
-        }
-    }
-
-    type();
-
-    // Fetch GitHub Repos
-    const projectsContainer = document.getElementById('projects-container');
-    fetch('https://api.github.com/users/Zapcart/repos?sort=updated&direction=desc')
-        .then(response => response.json())
-        .then(repos => {
             repos.forEach(repo => {
                 const projectCard = document.createElement('div');
-                projectCard.className = 'project-card';
+                projectCard.classList.add('project-card');
+
+                const description = repo.description ? 
+                    (repo.description.length > 150 ? `${repo.description.substring(0, 150)}...` : repo.description)
+                    : 'No description available. This repository showcases my skills in building robust applications.';
+
                 projectCard.innerHTML = `
-                    <h3>${repo.name}</h3>
-                    <p>${repo.description || 'No description available.'}</p>
-                    <div class="tech-stack">
+                    <h3>${repo.name.replace(/-/g, ' ')}</h3>
+                    <p>${description}</p>
+                    <div class="project-tech-stack">
                         ${repo.language ? `<span>${repo.language}</span>` : ''}
                     </div>
-                    <a href="${repo.html_url}" target="_blank" class="btn">View on GitHub</a>
+                    <div class="project-links">
+                        <a href="${repo.html_url}" target="_blank" class="btn btn-secondary">GitHub</a>
+                        ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="btn btn-primary">Live Demo</a>` : ''}
+                    </div>
                 `;
-                projectsContainer.appendChild(projectCard);
+                projectsGrid.appendChild(projectCard);
             });
-        })
-        .catch(error => console.error('Error fetching GitHub repos:', error));
+
+        } catch (error) {
+            projectsGrid.innerHTML = '<p style="color: var(--accent-color);">Failed to load projects. Please try again later.</p>';
+            console.error('Error fetching GitHub repos:', error);
+        }
+    }
+
+    fetchProjects();
 
     // EmailJS Contact Form
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
 
-    // Replace with your EmailJS credentials
-    const serviceID = 'service_semjs1c';
-    const templateID = 'template_a5d68vo';
-    const userID = 'AtCgBxp7Wiywc80-E';
+    const SERVICE_ID = 'service_semjs1c';
+    const TEMPLATE_ID = 'template_a5d68vo';
+    const PUBLIC_KEY = 'AtCgBxp7Wiywc80-E';
 
-    emailjs.init(userID);
+    (function(){
+        emailjs.init(PUBLIC_KEY);
+    })();
 
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-        formStatus.textContent = 'Sending...';
+        if (!this.from_name.value || !this.from_email.value || !this.message.value) {
+            formStatus.textContent = 'Please fill out all fields.';
+            formStatus.style.color = '#ffc107';
+            return;
+        }
 
-        emailjs.sendForm(serviceID, templateID, this)
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
             .then(() => {
-                formStatus.textContent = 'Message sent successfully!';
-                formStatus.style.color = 'green';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
                 contactForm.reset();
+                formStatus.textContent = 'Message sent successfully!';
+                formStatus.style.color = 'var(--accent-color)';
+                setTimeout(() => formStatus.textContent = '', 5000);
             }, (err) => {
-                formStatus.textContent = 'Failed to send message. Please try again later.';
-                formStatus.style.color = 'red';
-                console.error('EmailJS error:', err);
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                formStatus.textContent = `Failed to send. Error: ${JSON.stringify(err)}`;
+                formStatus.style.color = '#dc3545';
+                console.error('EmailJS Error:', err);
             });
     });
 
-    // Smooth scroll and section reveal
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            if (this.hash !== "") {
-                e.preventDefault();
-                const hash = this.hash;
-                document.querySelector(hash).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+    // Scroll Animations
+    const sections = document.querySelectorAll('.content-section');
+    const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
 
-    const sections = document.querySelectorAll('section');
-    const revealSection = (entries, observer) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('is-visible');
                 observer.unobserve(entry.target);
             }
         });
-    };
-
-    const sectionObserver = new IntersectionObserver(revealSection, {
-        root: null,
-        threshold: 0.15,
-    });
+    }, options);
 
     sections.forEach(section => {
-        section.style.opacity = 0;
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-        sectionObserver.observe(section);
+        observer.observe(section);
     });
 });

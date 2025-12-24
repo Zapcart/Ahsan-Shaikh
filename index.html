@@ -3,147 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ehsan Shaikh - Senior Full-Stack Developer</title>
-    <meta name="description" content="Senior developer portfolio for Ehsan Shaikh, a full-stack developer specializing in building enterprise-ready applications.">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Ahsan Shaikh | Senior Full-Stack Developer</title>
+    <meta name="description" content="The portfolio of Ahsan Shaikh, a senior full-stack developer focused on building high-impact, enterprise-ready applications.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="loading-screen">
-        <div class="loader"></div>
-    </div>
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
 
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="nav-logo">Ehsan Shaikh</a>
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="#" class="nav-logo">Ahsan.</a>
             <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#contact" class="btn btn-primary nav-contact">Contact</a></li>
             </ul>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <section id="hero">
-        <div id="particles-js"></div>
-        <div class="hero-content">
-            <img src="ahsanphoto.png" alt="Ehsan Shaikh" class="profile-photo">
-            <h1>Ehsan Shaikh</h1>
-            <h2 class="typing">Senior Full-Stack Developer</h2>
-            <p>I build robust, scalable, and enterprise-ready web applications.</p>
-            <div class="ctas">
-                <a href="#projects" class="btn">View Projects</a>
-                <a href="#contact" class="btn">Contact Me</a>
+    <main>
+        <section class="hero">
+            <div class="hero-glow"></div>
+            <div class="hero-content">
+                <h1 class="hero-headline">
+                    Senior Full-Stack Developer
+                </h1>
+                <p class="hero-subheadline">I build high-performance, scalable, and beautiful web applications from the ground up.</p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="about" class="glass">
-        <h2>About Me</h2>
-        <div class="about-container">
-            <div class="about-text">
-                <h3>My Developer Story</h3>
-                <p>
-                    I’m a passionate Full-Stack Developer with a knack for turning complex problems into elegant, high-performance web applications. My journey in tech began with a curiosity for how things work, which quickly evolved into a full-fledged passion for building meaningful products. I thrive in environments that challenge me to learn and grow, and I'm always eager to apply my skills to create software that makes a difference.
-                </p>
-                <h3>Experience Highlights</h3>
-                <ul>
-                    <li><strong>5+ Years</strong> of freelance and personal project experience.</li>
-                    <li>Expertise in <strong>MERN Stack</strong> (MongoDB, Express.js, React, Node.js).</li>
-                    <li>Proven ability to deliver **end-to-end solutions**, from concept to deployment.</li>
-                    <li>Strong focus on writing **clean, scalable, and maintainable code**.</li>
-                </ul>
+        <section id="about" class="about-section content-section">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Professional Summary</h3>
+                    <p>I am a growth-focused Full-Stack Developer with a passion for solving complex problems and building exceptional user experiences. My approach is rooted in a deep understanding of both front-end and back-end technologies, allowing me to create seamless, enterprise-ready applications. I thrive on turning ambitious ideas into reality.</p>
+                    <h3>Problem-Solving Mindset</h3>
+                    <p>For me, coding is a tool for problem-solving. I enjoy architecting robust solutions, optimizing performance, and ensuring code quality. I am always looking for opportunities to learn new technologies and improve my craft.</p>
+                </div>
+                <div class="about-image">
+                    <img src="ahsanphoto.png" alt="Ahsan Shaikh">
+                </div>
             </div>
-            <div class="about-image">
-                <img src="ahsanphoto.png" alt="About Me Image">
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="skills" class="glass">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3>Frontend</h3>
-                <ul>
-                    <li>HTML5 & CSS3</li>
-                    <li>JavaScript (ES6+)</li>
-                    <li>React.js</li>
-                    <li>Tailwind CSS</li>
-                    <li>Framer Motion</li>
-                </ul>
+        <section id="skills" class="skills-section content-section">
+            <h2 class="section-title">Core Technologies</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h4>Frontend</h4>
+                    <ul>
+                        <li>React.js</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>HTML5 & CSS3</li>
+                        <li>Framer Motion</li>
+                        <li>Tailwind CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h4>Backend</h4>
+                    <ul>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                        <li>MongoDB</li>
+                        <li>REST APIs</li>
+                        <li>Firebase</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h4>Tools & Workflow</h4>
+                    <ul>
+                        <li>Git & GitHub</li>
+                        <li>VS Code</li>
+                        <li>CI/CD</li>
+                        <li>Responsive Design</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                </div>
             </div>
-            <div class="skill-category">
-                <h3>Backend</h3>
-                <ul>
-                    <li>Node.js</li>
-                    <li>Express.js</li>
-                    <li>REST APIs</li>
-                    <li>MongoDB</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Tools & Others</h3>
-                <ul>
-                    <li>Git & GitHub</li>
-                    <li>VS Code</li>
-                    <li>Firebase</li>
-                    <li>Responsive Design</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects" class="glass">
-        <h2>My Projects</h2>
-        <div id="projects-container" class="projects-grid">
-            <!-- GitHub projects will be dynamically loaded here -->
-        </div>
-    </section>
+        <section id="projects" class="projects-section content-section">
+            <h2 class="section-title">My Work</h2>
+            <div id="projects-grid" class="projects-grid">
+                <!-- GitHub projects will be dynamically inserted here -->
+                <div class="project-card-placeholder">Loading Projects...</div>
+            </div>
+        </section>
 
-    <section id="experience" class="glass">
-        <h2>Experience & Highlights</h2>
-        <div class="experience-container">
-            <div class="experience-item">
-                <h3>Freelance Web Developer</h3>
-                <p>Designed and developed custom web solutions for various clients, focusing on e-commerce, booking systems, and business automation. Managed projects from initial consultation to final deployment, ensuring client satisfaction and delivering high-quality, scalable products.</p>
+        <section id="experience" class="experience-section content-section">
+            <h2 class="section-title">Experience & Highlights</h2>
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Freelance Full-Stack Developer</h3>
+                        <p>Delivered end-to-end web solutions for a diverse range of clients. My work involved everything from initial concept and UI/UX design to back-end development and deployment. This experience honed my ability to manage projects independently and deliver real-world impact.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Personal Project Architect</h3>
+                        <p>My GitHub showcases a variety of personal projects that demonstrate my problem-solving skills and my passion for technology. From a complex logistics platform to a sleek e-commerce site, these projects reflect my ability to build full-featured, practical applications.</p>
+                    </div>
+                </div>
             </div>
-            <div class="experience-item">
-                <h3>Problem-Solving Mindset</h3>
-                <p>Adept at analyzing complex technical challenges and devising effective, efficient solutions. I enjoy debugging intricate issues and optimizing application performance, always striving for the most robust and elegant implementation.</p>
-            </div>
-            <div class="experience-item">
-                <h3>Real-World Use Cases</h3>
-                <p>My portfolio is a testament to my ability to build practical, real-world applications. From a luxury villa booking platform to a comprehensive logistics management system, my projects demonstrate a deep understanding of user needs and business requirements.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact" class="glass">
-        <h2>Contact Me</h2>
-        <form id="contact-form">
-            <div class="form-group">
-                <input type="text" id="name" name="name" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-                <input type="email" id="email" name="email" placeholder="Your Email" required>
-            </div>
-            <div class="form-group">
-                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="btn">Send Message</button>
-            <div id="form-status"></div>
-        </form>
-    </section>
+        <section id="contact" class="contact-section content-section">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-subtext">Have a project in mind or just want to say hi? I’d love to hear from you.</p>
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="from_name" placeholder="Your Name" required>
+                    <label for="name">Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="from_email" placeholder="Your Email" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    <label for="message">Message</label>
+                </div>
+                <button type="submit" id="submit-btn" class="btn btn-primary">Send Message</button>
+                <div id="form-status"></div>
+            </form>
+        </section>
+    </main>
 
-    <footer>
-        <p>&copy; 2024 Ehsan Shaikh. All rights reserved.</p>
+    <footer class="main-footer">
+        <p>&copy; 2024 Ahsan Shaikh. Built from scratch with ☕</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
