@@ -565,6 +565,36 @@
         .project-content p {
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: #00f5ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .project-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00f5ff;
+            transition: width 0.3s;
+        }
+
+        .project-link:hover::after {
+            width: 100%;
+        }
+
+        .project-link:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #00f5ff;
         }
 
         /* Experience */
@@ -849,51 +879,57 @@
                 <div class="project-card">
                     <div class="project-image">
                         <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                            <rect x="10" y="20" width="60" height="45" rx="3" stroke="white" stroke-width="3"/>
-                            <path d="M20 30 L60 30" stroke="white" stroke-width="2"/>
-                            <circle cx="17" cy="25" r="2" fill="white"/>
-                            <circle cx="25" cy="25" r="2" fill="white"/>
-                            <circle cx="33" cy="25" r="2" fill="white"/>
-                            <rect x="20" y="38" width="15" height="15" rx="2" stroke="white" stroke-width="2"/>
-                            <line x1="45" y1="40" x2="60" y2="40" stroke="white" stroke-width="2"/>
-                            <line x1="45" y1="48" x2="55" y2="48" stroke="white" stroke-width="2"/>
+                            <path d="M15 30 L15 65 L65 65 L65 30 L40 15 L15 30" stroke="white" stroke-width="3" stroke-linejoin="round"/>
+                            <rect x="30" y="45" width="20" height="20" stroke="white" stroke-width="2"/>
+                            <line x1="40" y1="45" x2="40" y2="65" stroke="white" stroke-width="2"/>
+                            <line x1="30" y1="55" x2="50" y2="55" stroke="white" stroke-width="2"/>
+                            <circle cx="45" cy="52" r="2" fill="white"/>
+                            <rect x="22" y="35" width="10" height="8" stroke="white" stroke-width="2"/>
+                            <rect x="48" y="35" width="10" height="8" stroke="white" stroke-width="2"/>
                         </svg>
                     </div>
                     <div class="project-content">
-                        <h3>E-Commerce Platform</h3>
-                        <p>Full-featured online store with payment integration, inventory management, and admin dashboard.</p>
+                        <h3>Good Time Properties</h3>
+                        <p>Premium luxury villa rental platform with elegant UI/UX, smooth animations, and WhatsApp booking integration. Fully responsive real-estate solution.</p>
+                        <a href="https://privetvillas.online/" target="_blank" class="project-link">View Live →</a>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-image">
                         <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                            <rect x="15" y="10" width="50" height="60" rx="5" stroke="white" stroke-width="3"/>
-                            <rect x="20" y="15" width="40" height="6" rx="2" fill="white"/>
-                            <circle cx="30" cy="35" r="8" stroke="white" stroke-width="2"/>
-                            <circle cx="50" cy="35" r="8" stroke="white" stroke-width="2"/>
-                            <path d="M25 50 Q40 60 55 50" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                            <rect x="30" y="62" width="20" height="3" rx="1" fill="white"/>
+                            <circle cx="40" cy="35" r="20" stroke="white" stroke-width="3"/>
+                            <path d="M30 32 Q32 28 35 30" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M50 32 Q48 28 45 30" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M32 42 Q40 48 48 42" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M25 55 Q30 50 35 55" stroke="white" stroke-width="2" fill="none"/>
+                            <path d="M45 55 Q50 50 55 55" stroke="white" stroke-width="2" fill="none"/>
+                            <circle cx="33" cy="33" r="2" fill="white"/>
+                            <circle cx="47" cy="33" r="2" fill="white"/>
                         </svg>
                     </div>
                     <div class="project-content">
-                        <h3>Social Media App</h3>
-                        <p>Real-time chat application with user authentication and media sharing capabilities.</p>
+                        <h3>RoastMe AI</h3>
+                        <p>Gen-Z friendly AI web app with savage roasts, compliments & vibe checks. Built with Next.js 14, OpenAI API, and Cashfree payments integration.</p>
+                        <a href="https://roast-me-ai-two.vercel.app/" target="_blank" class="project-link">View Live →</a>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-image">
                         <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                            <rect x="10" y="15" width="60" height="50" rx="3" stroke="white" stroke-width="3"/>
-                            <path d="M20 50 L30 35 L40 45 L50 30 L60 40" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="30" cy="35" r="3" fill="white"/>
-                            <circle cx="40" cy="45" r="3" fill="white"/>
-                            <circle cx="50" cy="30" r="3" fill="white"/>
-                            <circle cx="60" cy="40" r="3" fill="white"/>
+                            <rect x="20" y="25" width="40" height="30" rx="3" stroke="white" stroke-width="3"/>
+                            <rect x="25" y="30" width="30" height="4" rx="1" fill="white"/>
+                            <circle cx="35" cy="43" r="5" stroke="white" stroke-width="2"/>
+                            <path d="M32 43 L34 45 L38 41" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="45" y1="40" x2="53" y2="40" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="45" y1="46" x2="50" y2="46" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M30 55 L35 60 L40 55" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M40 55 L45 60 L50 55" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <div class="project-content">
-                        <h3>Analytics Dashboard</h3>
-                        <p>Data visualization platform with interactive charts and real-time updates.</p>
+                        <h3>DriverSathi</h3>
+                        <p>Modern logistics platform connecting users with verified drivers for personal, delivery & outstation needs. Features trust-focused UI and real-world workflows.</p>
+                        <a href="https://zapcart.github.io/Driversathi/" target="_blank" class="project-link">View Live →</a>
                     </div>
                 </div>
             </div>
