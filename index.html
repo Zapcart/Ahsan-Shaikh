@@ -416,6 +416,7 @@
             font-weight: bold;
             box-shadow: 0 0 50px rgba(0, 245, 255, 0.5);
             animation: pulse 2s ease-in-out infinite;
+            overflow: hidden;
         }
 
         @keyframes pulse {
@@ -529,7 +530,15 @@
             overflow: hidden;
         }
 
-        .project-image::before {
+        .project-image svg {
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
             content: '';
             position: absolute;
             width: 200%;
@@ -767,7 +776,7 @@
             <p>I build high-performance, scalable, and beautiful web applications from the ground up.</p>
             <div>
                 <a href="#projects" class="btn">View Projects</a>
-                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                <a href="Ehsan_Shaikh_Resume.pdf" download class="btn btn-secondary">Download Resume</a>
             </div>
         </div>
     </section>
@@ -788,7 +797,9 @@
                     <div class="profile-container">
                         <div class="profile-ring"></div>
                         <div class="profile-ring"></div>
-                        <div class="profile-inner">AS</div>
+                        <div class="profile-inner">
+                            <img src="ahsanphoto.png" alt="Ahsan Shaikh" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -930,7 +941,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2025 Ahsan Shaikh. Built with passion </p>
+        <p>© 2024 Ahsan Shaikh. Built with passion ☕</p>
     </footer>
 
     <script>
